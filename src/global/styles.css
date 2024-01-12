@@ -1,0 +1,27 @@
+body {
+  background: linear-gradient(
+    352deg,
+    #412c76, /* Darker shade of green */
+    #8d3f2e, /* Complementary dark shade */
+    #200e37, /* Deep greenish-black */
+    #787261, /* Muted green */
+    #5d5c44, /* Olive green */
+    #69232b  /* Burgundy for contrast */
+  );
+  background-size: 360% 360%;
+  animation: gradient 20s ease infinite;
+  height: "100%";
+  overflow-x: hidden;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

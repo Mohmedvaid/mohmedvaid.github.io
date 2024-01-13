@@ -11,22 +11,36 @@ import Box from "@mui/material/Box";
 
 import HandGesture from "../components/HandGesture";
 
+const styles = {
+  root: {
+    height: "100vh",
+  },
+  // move the info icon top right
+  infoIcon: {
+    position: "absolute",
+    top: "8%",
+    right: 0,
+  },
+};
+
 const FunPage = () => {
   const [open, setOpen] = useState(true);
 
   const handleToggleDialog = () => setOpen(!open);
 
   return (
-    <Box sx={{ height: "100vh" }} component="section" id="fun">
-      <IconButton onClick={handleToggleDialog}>
+    <Box sx={styles.root} component="section" id="fun">
+      <IconButton onClick={handleToggleDialog} sx={styles.infoIcon}>
         <InfoIcon />
       </IconButton>
       <Dialog open={open} onClose={handleToggleDialog}>
         <DialogTitle>{"Hand Gesture Detection"}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            This is a fun application to detect hand gestures. No data is
-            tracked or saved.
+          <DialogContentText sx={{ color: "#e5e5e5" }}>
+            Explore the fun of AI with our Hand Gesture Detection! Just wave
+            your hand in front of the camera to interact with the screen.
+            Experience real-time AI recognition with full privacy – no data is
+            saved or tracked. Enjoy!
           </DialogContentText>
         </DialogContent>
         <DialogActions>

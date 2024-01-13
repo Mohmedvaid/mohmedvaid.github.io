@@ -19,18 +19,27 @@ import getFingerGestureGif from "./getFingerGestureGif";
 
 const styles = {
   root: {
-    padding: "20px",
     width: "100%",
+    marginTop: 15,
   },
   video: {
     transform: "scaleX(-1)",
-    width: "100%",
-    maxHeight: "400px",
-    margin: "20px",
+    width: "80%", // Reduced default width
+    maxHeight: "300px", // Reduced default max height
+    borderRadius: "5px",
+    "@media (max-width: 768px)": {
+      // Media query for mobile devices
+      width: "100%", // Full width on small screens
+      objectFit: "cover", // Cover to zoom in
+      height: "300px", // Fixed height to maintain aspect ratio
+    },
   },
   noticeWrapper: {
     textAlign: "center",
     marginTop: 5,
+    "@media (max-width: 768px)": {
+      marginTop: 0,
+    },
   },
 };
 
@@ -45,6 +54,7 @@ const HandGestureDetection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [detectedFingers, setDetectedFingers] = useState([]);
   const [currentGifUrl, setCurrentGifUrl] = useState(null);
+  const [isVideoReady, setIsVideoReady] = useState(true); // New state for tracking video readiness
 
   const detectedFingersMemo = useMemo(
     () => detectedFingers,
@@ -79,6 +89,7 @@ const HandGestureDetection = () => {
   const startVideo = useCallback(async () => {
     try {
       setIsLoading(true);
+      setIsVideoReady(false); // Set video readiness to false
       const stream = await navigator.mediaDevices.getUserMedia({ video: true });
       streamRef.current = stream;
       videoRef.current.srcObject = stream;
@@ -86,6 +97,7 @@ const HandGestureDetection = () => {
         videoRef.current.play();
         setIsDetectionStarted(true);
         setPermissionDenied(false);
+        setIsVideoReady(true); // Set video readiness to true
       };
     } catch (error) {
       console.error("Error accessing the webcam: ", error);
@@ -111,7 +123,7 @@ const HandGestureDetection = () => {
       } else {
         setDetectedFingers([]);
       }
-      detectionTimeoutRef.current = setTimeout(detect, 2000);
+      detectionTimeoutRef.current = setTimeout(detect, 1000);
     }
   }, [model, isDetectionStarted]);
 
@@ -140,7 +152,7 @@ const HandGestureDetection = () => {
             </Button>
           )}
           <PermissionNotice />
-          {isLoading && <Loader />}
+          {(isLoading || !isVideoReady) && <Loader />}
           <video
             ref={videoRef}
             style={styles.video}
@@ -158,11 +170,13 @@ const HandGestureDetection = () => {
               </>
             </Grid>
             <Grid item xs={12} sx={styles.noticeWrapper}>
-              <Button variant="contained" onClick={stopVideo}>
-                Stop Magic
-              </Button>
-              <Typography variant="subtitle1" gutterBottom>
-                Detection runs every 2 seconds for CPU efficiency. Please be
+              <Box sx={{ marginBottom: 2 }}>
+                <Button variant="contained" onClick={stopVideo}>
+                  Stop Magic
+                </Button>
+              </Box>
+              <Typography variant="subtitle1">
+                Detection runs every 1 second for CPU efficiency. Please be
                 patient.
               </Typography>
             </Grid>

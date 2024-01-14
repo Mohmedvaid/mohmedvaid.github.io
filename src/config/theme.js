@@ -4,15 +4,15 @@ const theme = createTheme({
   palette: {
     mode: "dark",
     background: {
-      default: "#1e1e1e", // Dark greenish-gray for background
-      paper: "#2c3e50", // Complementary darker shade
+      default: "#1e1e1e",
+      paper: "#2c3e50",
     },
     primary: {
-      main: "#56c288", // Soft green for primary actions and highlights
+      main: "#56c288",
     },
     cta: {
-      main: "#56c288", // Brighter green for call-to-action buttons
-      hover: "#57d299", // Slightly darker on hover
+      main: "#56c288",
+      hover: "#57d299",
     },
     text: {
       primary: "#ffffff",
@@ -20,58 +20,83 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "Silkscreen, Roboto, sans-serif",
+    fontFamily: "Ubuntu, Roboto, sans-serif",
     h1: {
       fontFamily: "Stalinist One, Roboto, sans-serif",
       fontWeight: 700,
-      fontSize: "3.5rem",
+      fontSize: "3rem",
+      lineHeight: 1.2,
       "@media (max-width:600px)": {
         fontSize: "2.5rem",
       },
     },
     h2: {
-      fontFamily: "Stalinist One",
-      fontSize: "2.2rem",
+      fontFamily: "Stalinist One, sans-serif",
+      fontWeight: 600,
+      fontSize: "2.5rem",
+      lineHeight: 1.3,
       "@media (max-width:600px)": {
-        fontSize: "1.8rem",
+        fontSize: "2rem",
       },
     },
     h3: {
-      fontSize: "1.8rem",
+      fontFamily: "Stalinist One, sans-serif",
+      fontSize: "2rem",
+      fontWeight: 500,
+      lineHeight: 1.35,
+    },
+    h4: {
+      fontFamily: "Stalinist One, sans-serif",
+      fontSize: "1.5rem",
+      fontWeight: 500,
+    },
+    h5: {
+      fontFamily: "Stalinist One, sans-serif",
+      fontSize: "1.25rem",
+      fontWeight: 400,
     },
     h6: {
-      fontWeight: 500,
+      fontFamily: "Stalinist One, sans-serif",
+      fontSize: "1.1rem",
+      fontWeight: 400,
     },
     body1: {
       fontSize: "1rem",
+      lineHeight: 1.5,
     },
-    title: {
-      fontSize: "2.7rem",
+    body2: {
+      fontFamily: "Silkscreen, Roboto, sans-serif",
+      fontSize: "0.9rem",
+      lineHeight: 1.4,
     },
-    xl: {
-      fontSize: "1.5rem",
-    },
-    lg: {
+    subtitle1: {
       fontSize: "1.2rem",
-      "@media (max-width:600px)": {
-        fontSize: "1rem",
-      },
+      fontWeight: 500,
     },
-    md: {
+    subtitle2: {
       fontSize: "1rem",
+      fontWeight: 400,
     },
-    sm: {
-      fontSize: "0.8rem",
+    button: {
+      fontWeight: 500,
+    },
+    caption: {
+      fontSize: "0.75rem",
+    },
+    overline: {
+      fontSize: "0.75rem",
+      fontWeight: 400,
+      letterSpacing: 1.5,
     },
   },
   components: {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: "rgba(144, 238, 144, 0.3)", // Light greenish background, mostly transparent
+          backgroundColor: "rgba(144, 238, 144, 0.3)",
           boxShadow: "none",
           transition: "all 0.5s ease",
-          borderRadius: "0", // No rounded corners
+          borderRadius: "0",
         },
       },
     },

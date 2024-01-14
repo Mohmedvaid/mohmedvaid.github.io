@@ -11,6 +11,8 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import "@fontsource/stalinist-one";
 import "@fontsource/silkscreen";
+import "@fontsource/ubuntu";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

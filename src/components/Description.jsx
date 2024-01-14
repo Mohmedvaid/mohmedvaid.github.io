@@ -8,12 +8,11 @@ import theme from "../config/theme";
 
 const styles = {
   textTitle: {
-    fontWeight: "bold",
-    fontSize: theme.typography.title.fontSize,
+    fonts: theme.typography.body2.fontFamily,
+    fontSize: theme.typography.h3.fontSize,
     marginBottom: "100px",
     textAlign: "center",
-    '@media (max-width:600px)': {
-      fontSize: theme.typography.h2.fontSize,
+    "@media (max-width:600px)": {
       marginBottom: "50px",
     },
   },
@@ -26,7 +25,7 @@ const styles = {
 const HomePage = () => {
   return (
     <>
-      <TypingEffect variant="h3" sx={styles.textTitle}>
+      <TypingEffect variant="body2" sx={styles.textTitle}>
         {description.title}
       </TypingEffect>
       <Typography sx={styles.description}>{description.text}</Typography>

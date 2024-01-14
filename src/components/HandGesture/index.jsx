@@ -32,17 +32,17 @@ const styles = {
     width: "80%", // Reduced default width
     maxHeight: "300px", // Reduced default max height
     borderRadius: "5px",
-    "@media (max-width: 768px)": {
+    "@media (maxWidth: 768px)": {
       // Media query for mobile devices
       width: "100%", // Full width on small screens
       objectFit: "cover", // Cover to zoom in
-      height: "300px", // Fixed height to maintain aspect ratio
+      height: "200px", // Fixed height to maintain aspect ratio
     },
   },
   noticeWrapper: {
     textAlign: "center",
     marginTop: 5,
-    "@media (max-width: 768px)": {
+    "@media (maxWidth: 768px)": {
       marginTop: 0,
     },
   },
@@ -59,7 +59,8 @@ const HandGestureDetection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [detectedFingers, setDetectedFingers] = useState([]);
   const [currentGifUrl, setCurrentGifUrl] = useState(null);
-  const [isVideoReady, setIsVideoReady] = useState(true); // New state for tracking video readiness
+  const [isVideoReady, setIsVideoReady] = useState(true);
+  const [isModelLoading, setIsModelLoading] = useState(false); // State to track model loading
 
   const detectedFingersMemo = useMemo(
     () => detectedFingers,

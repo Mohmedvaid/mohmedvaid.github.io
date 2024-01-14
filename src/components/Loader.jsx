@@ -1,22 +1,33 @@
 import React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
-const CircularIndeterminate = () => (
+const CircularIndeterminate = ({ text }) => (
   <Box
     sx={{
-      position: "fixed", // Fixed position
+      position: "fixed",
       top: 0,
       left: 0,
-      width: "100%", // Full width
-      height: "100%", // Full height
+      width: "100%",
+      height: "100%",
       display: "flex",
-      alignItems: "center", // Vertical center
-      justifyContent: "center", // Horizontal center
-      zIndex: 9999, // High z-index to be on top of other elements
+      flexDirection: "column", // Set direction to column to stack children vertically
+      alignItems: "center", // Center children horizontally
+      justifyContent: "center", // Center children vertically
+      zIndex: 9999,
     }}
   >
-    <CircularProgress />
+    <Box>
+      {/* Wrap loader in its own Box */}
+      <CircularProgress />
+    </Box>
+    {text && ( // Conditionally render text if it's provided
+      <Box sx={{ marginTop: 2 }}>
+        {/* Wrap text in its own Box */}
+        <Typography variant="subtitle1">{text}</Typography>
+      </Box>
+    )}
   </Box>
 );
 

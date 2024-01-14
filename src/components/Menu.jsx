@@ -22,7 +22,7 @@ const styles = {
     transition: "all 0.5s ease",
     width: "70%",
     boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.35)",
-    "@media (max-width:600px)": {
+    "@media (maxWidth: 768px)": {
       width: "65%",
     },
   },

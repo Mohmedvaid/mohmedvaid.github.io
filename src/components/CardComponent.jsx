@@ -22,6 +22,9 @@ const styles = {
 };
 
 const CardComponent = ({ title, content, image, repoLink }) => {
+  const truncatedContent =
+    content.length > 60 ? `${content.substring(0, 60)}...` : content;
+
   return (
     <Card sx={styles.wrapper}>
       {image && (
@@ -37,7 +40,7 @@ const CardComponent = ({ title, content, image, repoLink }) => {
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {content}
+          {truncatedContent}
         </Typography>
         {repoLink && (
           <Button href={repoLink} target="_blank">

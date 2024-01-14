@@ -12,7 +12,7 @@ const styles = {
     fontSize: theme.typography.h3.fontSize,
     marginBottom: "100px",
     textAlign: "center",
-    "@media (maxWidth: 768px)": {
+    "@media (max-width: 768px)": {
       marginBottom: "50px",
     },
   },

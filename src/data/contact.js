@@ -1,5 +1,5 @@
-import resumeDoc from "../assets/resume/Mohmedhusain_Vaid_Resume.docx";
-import resumePDF from "../assets/resume/Mohmedhusain_Vaid_Resume.pdf";
+import resumeDoc from "../assets/resume/resume.docx";
+import resumePDF from "../assets/resume/resume.pdf";
 
 const title = `Let's Get In Touch!`;
 

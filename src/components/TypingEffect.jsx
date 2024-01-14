@@ -30,7 +30,11 @@ const TypingEffect = ({ variant, children, speed = 100, sx }) => {
   }, [text, typedText, speed]);
 
   return (
-    <Typography component="span" sx={{ ...sx, display: "inline" }} variant={variant}>
+    <Typography
+      component="span"
+      sx={{ ...sx, display: "inline" }}
+      variant={variant}
+    >
       {typedText}
       <Typography component="span" sx={{ ...styles.cursor, ...sx }}>
         |

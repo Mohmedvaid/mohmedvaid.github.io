@@ -10,6 +10,7 @@ import theme, { fontList } from "./config/theme";
 import Layout from "./components/Layout";
 import Loader from "./components/Loader";
 import menuItems from "./data/menu";
+import ScrollToTop from "./components/ScrollToTop";
 import "./global/styles.css"; // bg gradient
 
 // lazy load pages
@@ -40,6 +41,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Suspense fallback={<Loader />}>
+        <ScrollToTop />
         <Routes>
           <Route
             path="/"

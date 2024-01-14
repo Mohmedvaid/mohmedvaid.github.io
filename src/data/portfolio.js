@@ -8,61 +8,78 @@ import passwordImage from "../assets/img/projectImages/passwordGenerator.png";
 import weatherImage from "../assets/img/projectImages/weatherApp.png";
 import pantryImage from "../assets/img/projectImages/mypantry.png";
 import fitnessImage from "../assets/img/projectImages/fitnessTracker.png";
+import employeeTrackerImage from "../assets/img/projectImages/employeeDirectory.png";
 
 const projects = [
   {
     name: "Shift Scheduler",
-    description: "Description of Project One.",
+    description:
+      "Efficiently manage employee shifts and schedules with this intuitive scheduling tool.",
     image: shiftImage,
     repoLink: "https://github.com/Mohmedvaid/cr-shift",
   },
   {
     name: "Shaker",
-    description: "Description of Project Two.",
+    description:
+      "Shaker is a web app for discovering new cocktails and drinks.",
     image: shakerImage,
     repoLink: "https://github.com/JSON-D3RULO/shaker",
   },
   {
     name: "Fetch",
-    description: "Description of Project Two.",
+    description:
+      "Fetch connects and helps socialize pets across cities and towns.",
     image: fetchImage,
-    repoLink: "https://github.com/JSON-D3RULO/shaker",
+    repoLink: "https://github.com/raise-da-woof/fetch",
   },
   {
     name: "My Pantry",
-    description: "Description of Project Three.",
+    description:
+      "MyPantry is a web application that help users to track groceries.",
     image: pantryImage,
-    repoLink: "",
+    repoLink: "https://github.com/Hot-Fixers/mypantry",
   },
   {
     name: "Fitness Tracker",
-    description: "Description of Project Three.",
+    description:
+      "The fitness tracker allows users to create, track and manage workouts/exercises.",
     image: fitnessImage,
-    repoLink: "",
+    repoLink: "https://github.com/Mohmedvaid/fitness-tracker",
   },
   {
     name: "Note Taker",
-    description: "Description of Project Three.",
+    description:
+      "An easy-to-use app for organizing notes, ideas, and reminders on the go.",
     image: noteImage,
-    repoLink: "",
+    repoLink: "https://github.com/Mohmedvaid/note-taker",
   },
   {
     name: "Password Generator",
-    description: "Description of Project Three.",
+    description:
+      "Generate secure, complex passwords instantly for enhanced digital security.",
     image: passwordImage,
-    repoLink: "",
+    repoLink: "https://github.com/Mohmedvaid/password-generator",
   },
   {
     name: "Weather Dashboard",
-    description: "Description of Project Three.",
+    description:
+      "Get real-time weather updates and forecasts with this interactive weather dashboard.",
     image: weatherImage,
-    repoLink: "",
+    repoLink: "https://github.com/Mohmedvaid/weather-app",
   },
   {
     name: "Employee Manager",
-    description: "Description of Project Three.",
+    description:
+      "Streamline employee management with features for scheduling, payroll, and performance tracking",
     image: employeeImage,
-    repoLink: "",
+    repoLink: "https://github.com/Mohmedvaid/employee-tracker",
+  },
+  {
+    name: "Employee Tracker",
+    description:
+      "A robust solution for tracking employee details, assignments, and productivity metrics.",
+    image: employeeTrackerImage,
+    repoLink: "https://github.com/Mohmedvaid/employer-directory",
   },
 ];
 

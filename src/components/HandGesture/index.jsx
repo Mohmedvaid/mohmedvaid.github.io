@@ -5,7 +5,7 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
-import * as tf from "@tensorflow/tfjs";
+import * as tf from "@tensorflow/tfjs"; // needed for handpose
 import * as handpose from "@tensorflow-models/handpose";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";

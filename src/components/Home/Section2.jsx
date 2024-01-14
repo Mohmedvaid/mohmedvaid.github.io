@@ -50,7 +50,7 @@ const sectionStyles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    "@media (maxWidth: 768px)": {
+    "@media (max-width: 768px)": {
       height: "auto",
       padding: "40px 0",
     },
@@ -60,7 +60,7 @@ const sectionStyles = {
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-    "@media (maxWidth: 768px)": {
+    "@media (max-width: 768px)": {
       gap: 2,
     },
   },
@@ -77,7 +77,7 @@ const sectionStyles = {
     { top: "70%", right: "70%", transform: "rotate(-15deg)" },
   ],
   carouselContainer: {
-    "@media (maxWidth: 768px)": {
+    "@media (max-width: 768px)": {
       padding: "0",
       my: "50px",
     },

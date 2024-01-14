@@ -1,4 +1,4 @@
-# Mohmedhusain Vaid's Portfolio
+# Mohmed Vaid's Portfolio
 
 ## Overview
 Welcome to the GitHub repository for my professional portfolio. This portfolio is a showcase of my journey and skills as a Full Stack Developer, highlighting my projects, technical skills, and experiences.
@@ -50,4 +50,4 @@ Feel free to reach out if you have any questions, suggestions, or just want to c
 
 ---
 
-Crafted with ❤️ by Mohmedhusain Vaid
+Crafted with ❤️ by Mohmed Vaid

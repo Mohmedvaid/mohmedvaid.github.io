@@ -80,17 +80,19 @@ const HandGestureDetection = () => {
   useEffect(() => {
     const loadModel = async () => {
       try {
-        setIsLoading(true);
+        setIsModelLoading(true); // Set model loading to true
         const loadedModel = await handpose.load();
         setModel(loadedModel);
       } catch (error) {
         console.error("Failed to load model: ", error);
       } finally {
-        setIsLoading(false);
+        setIsModelLoading(false); // Set model loading to false
       }
     };
     loadModel();
   }, []);
+
+  // create a function to handle start video. This function will be passed to the button. on click show loader while model is loading. once model is loaded then check for streams, then set is loading false
 
   const startVideo = useCallback(async () => {
     try {
@@ -121,6 +123,8 @@ const HandGestureDetection = () => {
   }, []);
 
   const detect = useCallback(async () => {
+    if (isModelLoading) return setIsLoading(true); // If model is loading, set loading to true
+    setIsLoading(false); // If model is loaded, set loading to false
     if (videoRef.current && model && isDetectionStarted) {
       const predictions = await model.estimateHands(videoRef.current);
       if (predictions.length > 0) {
@@ -158,7 +162,7 @@ const HandGestureDetection = () => {
             </Button>
           )}
           <PermissionNotice />
-          {(isLoading || !isVideoReady) && <Loader />}
+          {(isLoading || !isVideoReady) && <Loader text="Preparing AI Model" />}
           <video
             ref={videoRef}
             style={styles.video}

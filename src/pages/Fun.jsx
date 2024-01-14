@@ -10,6 +10,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 
 import HandGesture from "../components/HandGesture";
+import { funActiviyPrivacyNotice } from "../config/fun";
 
 const styles = {
   root: {
@@ -37,10 +38,7 @@ const FunPage = () => {
         <DialogTitle>{"Hand Gesture Detection"}</DialogTitle>
         <DialogContent>
           <DialogContentText sx={{ color: "#e5e5e5" }}>
-            Explore the fun of AI with our Hand Gesture Detection! Just wave
-            your hand in front of the camera to interact with the screen.
-            Experience real-time AI recognition with full privacy – no data is
-            saved or tracked. Enjoy!
+            {funActiviyPrivacyNotice}
           </DialogContentText>
         </DialogContent>
         <DialogActions>

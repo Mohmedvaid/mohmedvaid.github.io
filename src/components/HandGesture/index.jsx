@@ -16,6 +16,11 @@ import Loader from "../Loader";
 import DetectedFingers from "./DetectedFingers";
 import getExtendedFingers from "./getExtendedFingers";
 import getFingerGestureGif from "./getFingerGestureGif";
+import {
+  readTimer,
+  videoPermissionDeniedMessage,
+  detectionNotice,
+} from "../../config/fun";
 
 const styles = {
   root: {
@@ -123,7 +128,7 @@ const HandGestureDetection = () => {
       } else {
         setDetectedFingers([]);
       }
-      detectionTimeoutRef.current = setTimeout(detect, 1000);
+      detectionTimeoutRef.current = setTimeout(detect, readTimer || 1000);
     }
   }, [model, isDetectionStarted]);
 
@@ -138,7 +143,7 @@ const HandGestureDetection = () => {
   const PermissionNotice = () => {
     if (!permissionDenied) return null;
     return (
-      <Typography color="error">Need video permissions to proceed.</Typography>
+      <Typography color="error">{videoPermissionDeniedMessage}</Typography>
     );
   };
 
@@ -175,10 +180,7 @@ const HandGestureDetection = () => {
                   Stop Magic
                 </Button>
               </Box>
-              <Typography variant="subtitle1">
-                Detection runs every 1 second for CPU efficiency. Please be
-                patient.
-              </Typography>
+              <Typography variant="subtitle1">{detectionNotice}</Typography>
             </Grid>
           </>
         )}

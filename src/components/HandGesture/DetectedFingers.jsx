@@ -25,7 +25,7 @@ const DetectedFingers = memo(
     return (
       <Box>
         <Typography textAlign="center" gutterBottom>
-          {fingers.length === 0 ? "No fingers detected" : fingers.join(", ")}
+          {fingers.length === 0 ? "No fingers detected on camera" : fingers.join(", ")}
         </Typography>
         {gifUrl && (
           <div style={styles.iframeWrapper}>

@@ -65,7 +65,7 @@ const getFingerGestureGif = (detectedFingers) => {
 
   if (detectedFingers.length === 4) return fingerCombinations["four"];
 
-  return fingerCombinations["default"];
+  return null;
 };
 
 export default getFingerGestureGif;

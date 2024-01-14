@@ -153,7 +153,7 @@ const HandGestureDetection = () => {
         <Grid item xs={12} md={6} align="center">
           {!isDetectionStarted && !permissionDenied && (
             <Button variant="contained" onClick={startVideo}>
-              Start Magic
+              Start Gesture Detection
             </Button>
           )}
           <PermissionNotice />
@@ -162,6 +162,7 @@ const HandGestureDetection = () => {
             ref={videoRef}
             style={styles.video}
             hidden={!isDetectionStarted}
+            playsInline
           />
         </Grid>
         {isDetectionStarted && (

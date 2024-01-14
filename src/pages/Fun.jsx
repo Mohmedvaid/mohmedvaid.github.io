@@ -19,7 +19,7 @@ const styles = {
   // move the info icon top right
   infoIcon: {
     position: "absolute",
-    top: "8%",
+    top: "12%",
     right: 0,
   },
 };

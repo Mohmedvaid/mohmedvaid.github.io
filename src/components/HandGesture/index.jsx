@@ -11,7 +11,6 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 import Loader from "../Loader";
 import DetectedFingers from "./DetectedFingers";
@@ -22,12 +21,13 @@ import {
   videoPermissionDeniedMessage,
   detectionNotice,
 } from "../../config/fun";
+import { useIsMobile } from "../../hooks/useIsMobile";
 
 const HandGestureDetection = () => {
   const videoRef = useRef();
   const streamRef = useRef();
   const detectionTimeoutRef = useRef();
-  const isMobile = useMediaQuery("(max-width:768px)");
+  const isMobile = useIsMobile();
   let styles = {
     root: {
       width: "100%",

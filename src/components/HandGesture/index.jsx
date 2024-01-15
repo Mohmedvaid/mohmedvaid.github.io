@@ -92,8 +92,6 @@ const HandGestureDetection = () => {
     loadModel();
   }, []);
 
-  // create a function to handle start video. This function will be passed to the button. on click show loader while model is loading. once model is loaded then check for streams, then set is loading false
-
   const startVideo = useCallback(async () => {
     try {
       setIsLoading(true);
@@ -110,8 +108,6 @@ const HandGestureDetection = () => {
     } catch (error) {
       console.error("Error accessing the webcam: ", error);
       setPermissionDenied(true);
-    } finally {
-      setIsLoading(false);
     }
   }, []);
 
@@ -154,6 +150,7 @@ const HandGestureDetection = () => {
 
   return (
     <Box sx={styles.root}>
+      {(isLoading || !isVideoReady) && <Loader text="Preparing AI Model" />}
       <Grid container spacing={2} justifyContent="center" alignItems="center">
         <Grid item xs={12} md={6} align="center">
           {!isDetectionStarted && !permissionDenied && (
@@ -162,30 +159,25 @@ const HandGestureDetection = () => {
             </Button>
           )}
           <PermissionNotice />
-          {(isLoading || !isVideoReady) && <Loader text="Preparing AI Model" />}
           <video
             ref={videoRef}
             style={styles.video}
-            hidden={!isDetectionStarted}
+            hidden={!isDetectionStarted || isLoading}
             playsInline
           />
         </Grid>
-        {isDetectionStarted && (
+        {isDetectionStarted && !isLoading && (
           <>
             <Grid item xs={12} md={6} sx={{ textAlign: "center" }}>
-              <>
-                <DetectedFingers
-                  fingers={detectedFingersMemo}
-                  gifUrl={currentGifUrl}
-                />
-              </>
+              <DetectedFingers
+                fingers={detectedFingersMemo}
+                gifUrl={currentGifUrl}
+              />
             </Grid>
             <Grid item xs={12} sx={styles.noticeWrapper}>
-              <Box sx={{ marginBottom: 2 }}>
-                <Button variant="contained" onClick={stopVideo}>
-                  Stop Magic
-                </Button>
-              </Box>
+              <Button variant="contained" onClick={stopVideo} sx={{ mb: 2 }}>
+                Stop Magic
+              </Button>
               <Typography variant="subtitle1">{detectionNotice}</Typography>
             </Grid>
           </>

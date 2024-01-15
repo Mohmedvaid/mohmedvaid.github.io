@@ -16,6 +16,7 @@ const PortfolioPage = () => (
             content={project.description}
             image={project.image}
             repoLink={project.repoLink}
+            liveLink={project.liveLink}
           />
         </FadeIn>
       </Grid>

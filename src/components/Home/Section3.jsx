@@ -27,6 +27,7 @@ const Section3 = () => (
             content={project.description}
             image={project.image}
             repoLink={project.repoLink}
+            liveLink={project.liveLink}
           />
         </Grid>
       ))}

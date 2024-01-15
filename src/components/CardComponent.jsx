@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 const styles = {
   wrapper: {
@@ -21,7 +22,13 @@ const styles = {
   },
 };
 
-const CardComponent = ({ title, content, image, repoLink }) => {
+const CardComponent = ({
+  title,
+  content,
+  image,
+  repoLink,
+  liveLink = null,
+}) => {
   const truncatedContent =
     content.length > 60 ? `${content.substring(0, 60)}...` : content;
 
@@ -42,11 +49,18 @@ const CardComponent = ({ title, content, image, repoLink }) => {
         <Typography variant="body2" color="text.secondary">
           {truncatedContent}
         </Typography>
-        {repoLink && (
-          <Button href={repoLink} target="_blank">
-            View Repo
-          </Button>
-        )}
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          {repoLink && (
+            <Button href={repoLink} target="_blank">
+              View Repo
+            </Button>
+          )}
+          {liveLink && (
+            <Button href={liveLink} target="_blank">
+              View Live
+            </Button>
+          )}
+        </Box>
       </CardContent>
     </Card>
   );

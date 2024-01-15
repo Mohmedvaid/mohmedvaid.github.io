@@ -11,6 +11,7 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import Loader from "../Loader";
 import DetectedFingers from "./DetectedFingers";
@@ -22,36 +23,39 @@ import {
   detectionNotice,
 } from "../../config/fun";
 
-const styles = {
-  root: {
-    width: "100%",
-    marginTop: 15,
-  },
-  video: {
-    transform: "scaleX(-1)",
-    width: "80%", // Reduced default width
-    maxHeight: "300px", // Reduced default max height
-    borderRadius: "5px",
-    "@media (maxWidth: 768px)": {
-      // Media query for mobile devices
-      width: "100%", // Full width on small screens
-      objectFit: "cover", // Cover to zoom in
-      height: "200px", // Fixed height to maintain aspect ratio
-    },
-  },
-  noticeWrapper: {
-    textAlign: "center",
-    marginTop: 5,
-    "@media (maxWidth: 768px)": {
-      marginTop: 0,
-    },
-  },
-};
-
 const HandGestureDetection = () => {
   const videoRef = useRef();
   const streamRef = useRef();
   const detectionTimeoutRef = useRef();
+  const isMobile = useMediaQuery("(max-width:768px)");
+  let styles = {
+    root: {
+      width: "100%",
+      marginTop: 15,
+    },
+    video: {
+      transform: "scaleX(-1)",
+      width: "100%", // Full width on small screens
+      maxHeight: "300px", // Reduced default max height
+      borderRadius: "5px",
+    },
+    noticeWrapper: {
+      textAlign: "center",
+      marginTop: 5,
+      "@media (maxWidth: 768px)": {
+        marginTop: 0,
+      },
+    },
+  };
+
+  if (isMobile) {
+    styles.video = {
+      ...styles.video,
+      objectFit: "cover", // Cover to zoom in
+      maxHeight: "200px", // Fixed height to maintain aspect ratio
+      width: "80%", // Full width on small screens
+    };
+  }
 
   const [model, setModel] = useState(null);
   const [permissionDenied, setPermissionDenied] = useState(false);
@@ -108,6 +112,7 @@ const HandGestureDetection = () => {
     } catch (error) {
       console.error("Error accessing the webcam: ", error);
       setPermissionDenied(true);
+      setIsLoading(false);
     }
   }, []);
 
@@ -150,15 +155,31 @@ const HandGestureDetection = () => {
 
   return (
     <Box sx={styles.root}>
-      {(isLoading || !isVideoReady) && <Loader text="Preparing AI Model" />}
-      <Grid container spacing={2} justifyContent="center" alignItems="center">
-        <Grid item xs={12} md={6} align="center">
+      {(isLoading || !isVideoReady) && !permissionDenied && (
+        <Loader text="Preparing AI Model" />
+      )}
+      <Grid container spacing={2} alignItems="end" justifyContent="center">
+        <Grid item xs={12} style={{ textAlign: "center" }}>
           {!isDetectionStarted && !permissionDenied && (
             <Button variant="contained" onClick={startVideo}>
               Start Gesture Detection
             </Button>
           )}
+          {isDetectionStarted && !isLoading && (
+            <>
+              <Button variant="contained" onClick={stopVideo} sx={{ mb: 2 }}>
+                Stop Magic
+              </Button>
+              <Typography variant="subtitle1">{detectionNotice}</Typography>
+            </>
+          )}
+        </Grid>
+
+        <Grid item xs={12} style={styles.noticeWrapper}>
           <PermissionNotice />
+        </Grid>
+
+        <Grid item md={6} xs={12} align="center">
           <video
             ref={videoRef}
             style={styles.video}
@@ -166,21 +187,14 @@ const HandGestureDetection = () => {
             playsInline
           />
         </Grid>
+
         {isDetectionStarted && !isLoading && (
-          <>
-            <Grid item xs={12} md={6} sx={{ textAlign: "center" }}>
-              <DetectedFingers
-                fingers={detectedFingersMemo}
-                gifUrl={currentGifUrl}
-              />
-            </Grid>
-            <Grid item xs={12} sx={styles.noticeWrapper}>
-              <Button variant="contained" onClick={stopVideo} sx={{ mb: 2 }}>
-                Stop Magic
-              </Button>
-              <Typography variant="subtitle1">{detectionNotice}</Typography>
-            </Grid>
-          </>
+          <Grid item md={6} xs={12}>
+            <DetectedFingers
+              fingers={detectedFingersMemo}
+              gifUrl={currentGifUrl}
+            />
+          </Grid>
         )}
       </Grid>
     </Box>

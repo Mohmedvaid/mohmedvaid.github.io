@@ -41,6 +41,7 @@ const DetectedFingers = memo(
           </div>
         )}
       </Box>
+      
     );
   },
   (prevProps, nextProps) => {

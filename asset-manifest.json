@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.2a4b8e4b.css",
-    "main.js": "/static/js/main.74f5f99f.js",
-    "static/js/790.b3649175.chunk.js": "/static/js/790.b3649175.chunk.js",
+    "main.js": "/static/js/main.ffda0bf3.js",
+    "static/js/989.e5749b9b.chunk.js": "/static/js/989.e5749b9b.chunk.js",
     "static/js/813.01801efd.chunk.js": "/static/js/813.01801efd.chunk.js",
     "static/js/24.d9a2283a.chunk.js": "/static/js/24.d9a2283a.chunk.js",
     "static/js/306.3c705076.chunk.js": "/static/js/306.3c705076.chunk.js",
@@ -14,6 +14,7 @@
     "static/media/mypantry.png": "/static/media/mypantry.045a92ce29d405b480b6.png",
     "static/media/fetch.png": "/static/media/fetch.6983f9b47f48674329e5.png",
     "static/media/shaker.png": "/static/media/shaker.13b270c2a84d3a97be28.png",
+    "static/media/me.png": "/static/media/me.5f8d2b46ab75b7f5594a.png",
     "static/media/repairRangers.png": "/static/media/repairRangers.b9bf504ac62b7750393d.png",
     "static/media/employeeDirectory.png": "/static/media/employeeDirectory.db0f1362b250e671f516.png",
     "static/media/employeeManager.png": "/static/media/employeeManager.e2ce5fa319121d4aa2e9.png",
@@ -21,7 +22,6 @@
     "static/media/Mohmed_Vaid_Resume.pdf": "/static/media/Mohmed_Vaid_Resume.986072105040df3114df.pdf",
     "static/media/crShift.png": "/static/media/crShift.89abeecddafe3de11d92.png",
     "static/media/fitnessTracker.png": "/static/media/fitnessTracker.67cd2ca8f36303d2e5af.png",
-    "static/media/me.jpeg": "/static/media/me.b21bf5e9a8607790d572.jpeg",
     "static/media/js.png": "/static/media/js.2492ac7ec9cf5ee80bee.png",
     "static/media/react.png": "/static/media/react.49538703b992aa568b8c.png",
     "static/media/ubuntu-latin-ext-400-normal.woff2": "/static/media/ubuntu-latin-ext-400-normal.9967dbf10fc3cb92edfb.woff2",
@@ -119,8 +119,8 @@
     "static/media/roboto-greek-ext-400-normal.woff": "/static/media/roboto-greek-ext-400-normal.f708607d2a7290fb8bfa.woff",
     "static/media/roboto-greek-ext-700-normal.woff": "/static/media/roboto-greek-ext-700-normal.249853776d22a271b2b5.woff",
     "main.2a4b8e4b.css.map": "/static/css/main.2a4b8e4b.css.map",
-    "main.74f5f99f.js.map": "/static/js/main.74f5f99f.js.map",
-    "790.b3649175.chunk.js.map": "/static/js/790.b3649175.chunk.js.map",
+    "main.ffda0bf3.js.map": "/static/js/main.ffda0bf3.js.map",
+    "989.e5749b9b.chunk.js.map": "/static/js/989.e5749b9b.chunk.js.map",
     "813.01801efd.chunk.js.map": "/static/js/813.01801efd.chunk.js.map",
     "24.d9a2283a.chunk.js.map": "/static/js/24.d9a2283a.chunk.js.map",
     "306.3c705076.chunk.js.map": "/static/js/306.3c705076.chunk.js.map",
@@ -131,6 +131,6 @@
   },
   "entrypoints": [
     "static/css/main.2a4b8e4b.css",
-    "static/js/main.74f5f99f.js"
+    "static/js/main.ffda0bf3.js"
   ]
 }

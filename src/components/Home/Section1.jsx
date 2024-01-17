@@ -7,7 +7,7 @@ import Section from "../Section";
 import FadeIn from "../Animations/FadeInAnimation";
 import { scratchOffRevealCode } from "../../data/home";
 
-import topImage from "../../assets/img/me.jpeg";
+import topImage from "../../assets/img/me.png";
 
 const styles = {
   scratchOffSize: {

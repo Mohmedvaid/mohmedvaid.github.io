@@ -9,11 +9,12 @@ import theme from "../config/theme";
 const styles = {
   textTitle: {
     fonts: theme.typography.body2.fontFamily,
-    fontSize: theme.typography.h3.fontSize,
+    fontSize: theme.typography.h1.fontSize,
     marginBottom: "100px",
     textAlign: "center",
     "@media (max-width: 768px)": {
       marginBottom: "50px",
+      fontSize: "2.4rem",
     },
   },
   description: {

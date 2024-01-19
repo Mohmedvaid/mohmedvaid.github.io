@@ -1,4 +1,4 @@
-const readTimer = 500; // 2 seconds
+const readTimer = 300; // 0.3 seconds
 const readTimerInSec = readTimer / 1000;
 const videoPermissionDeniedMessage = `Video camera access needed.`;
 const detectionNotice = `Detection runs every ${readTimerInSec} second for CPU efficiency. Please be patient.`;

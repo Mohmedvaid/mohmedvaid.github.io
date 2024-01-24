@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+const { fingerMap } = require("../../config/fun");
 
 // disable interaction on iframe
 const styles = {
@@ -25,7 +26,15 @@ const DetectedFingers = memo(
     return (
       <Box>
         <Typography textAlign="center" gutterBottom>
-          {fingers.length === 0 ? "No fingers detected on camera" : fingers.join(", ")}
+          {fingers.length === 0
+            ? "No fingers detected on camera"
+            : fingers.map((finger, index) => {
+                return (
+                  <span key={index}>
+                    {fingerMap[finger]} {index !== fingers.length - 1 && ", "}
+                  </span>
+                );
+              })}
         </Typography>
         {gifUrl && (
           <div style={styles.iframeWrapper}>
@@ -41,7 +50,6 @@ const DetectedFingers = memo(
           </div>
         )}
       </Box>
-      
     );
   },
   (prevProps, nextProps) => {

@@ -4,25 +4,22 @@ const description = {
   text: `As a Full Stack Web Developer based in Chicago, I blend my computer science background with specialized training from Northwestern University to create impactful web applications. My expertise spans JavaScript, React.js, Node.js, Python, and other key technologies. Focused on innovative problem-solving and efficient design, I'm keen on exploring diverse entrepreneurial challenges and collaborating on solutions that matter.`,
 };
 
-const scratchOffRevealCode = `<head>
-
-  <!-- Head: Filled with endless innovative circuits and bright ideas. -->
-  <title>The Adventure of My Mind</title>
-
+const scratchOffRevealCode = 
+`<head>
+  Filled with endless innovative circuits and bright ideas.
+  <goals> Promise <Pending> </goals>
 </head>
 
-<body>
 
   <daily-life>
-    <!-- Balancing the energy intake (pizza) with some fitness magic! -->
+    Balancing the energy intake (pizza) with some fitness magic!
   </daily-life>
 
   <mind-habits>
     Brain's Status: Solving puzzles. Expert in dodging life's little errors.
     Adventure Log: Charting new paths and avoiding routine ruts.
   </mind-habits>
-  
-</body>`;
+`;
 
 const section1 = {}; // nothing here for now
 const section2 = {

@@ -30,7 +30,7 @@ const ScratchOff = ({
   const revealedCodeStyles = {
     ...canvasStyles,
     fontFamily: "monospace",
-    fontSize: "0.8rem",
+    fontSize: "1rem",
     color: "white",
     backgroundColor: "black",
     overflow: "auto",

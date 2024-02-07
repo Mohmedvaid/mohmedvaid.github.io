@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useMemo,
 } from "react";
+// eslint-disable-next-line
 import * as tf from "@tensorflow/tfjs"; // needed for handpose
 import * as handpose from "@tensorflow-models/handpose";
 import Button from "@mui/material/Button";
@@ -64,11 +65,11 @@ const HandGestureDetection = () => {
   const [detectedFingers, setDetectedFingers] = useState([]);
   const [currentGifUrl, setCurrentGifUrl] = useState(null);
   const [isVideoReady, setIsVideoReady] = useState(true);
-  const [isModelLoading, setIsModelLoading] = useState(false); // State to track model loading
-
+  const [isModelLoading, setIsModelLoading] = useState(false);
+  const detectedFingersString = detectedFingers.join(",");
   const detectedFingersMemo = useMemo(
     () => detectedFingers,
-    [detectedFingers.join(",")]
+    [detectedFingersString]
   );
   const newGifEmbedUrl = useMemo(
     () => getFingerGestureGif(detectedFingersMemo),
@@ -136,7 +137,7 @@ const HandGestureDetection = () => {
       }
       detectionTimeoutRef.current = setTimeout(detect, readTimer || 1000);
     }
-  }, [model, isDetectionStarted]);
+  }, [model, isDetectionStarted, isModelLoading]);
 
   useEffect(() => {
     if (model && isDetectionStarted) {

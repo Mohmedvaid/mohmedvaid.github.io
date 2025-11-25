@@ -812,7 +812,7 @@ export default function Home() {
                        data-testid="button-download-resume"
                        onClick={() => {
                          const link = document.createElement('a');
-                         link.href = '/assets/Mohmed_Vaid_Resume_1764032835208.docx';
+                         link.href = '/assets/Mohmed_Vaid_Resume.docx';
                          link.download = 'Mohmed_Vaid_Resume.docx';
                          link.click();
                        }}

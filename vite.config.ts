@@ -2,6 +2,7 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
+import { existsSync, cpSync } from "fs";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 import { metaImagesPlugin } from "./vite-plugin-meta-images";
 
@@ -12,6 +13,17 @@ export default defineConfig({
     runtimeErrorOverlay(),
     tailwindcss(),
     metaImagesPlugin(),
+    // Copy assets folder to dist after build
+    {
+      name: "copy-assets",
+      closeBundle() {
+        const assetsSrc = path.resolve(import.meta.dirname, "assets");
+        const assetsDest = path.resolve(import.meta.dirname, "dist", "assets");
+        if (existsSync(assetsSrc)) {
+          cpSync(assetsSrc, assetsDest, { recursive: true });
+        }
+      },
+    },
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [

@@ -9,7 +9,7 @@ import { useTheme } from "next-themes";
 import { CustomCursor } from "@/components/CustomCursor";
 import { SnakeGame } from "@/components/SnakeGame";
 import { ContactDialog } from "@/components/ContactDialog";
-import userImage from '@assets/me22_1764030591134.png';
+import userImage from '@assets/me.png';
 
 // A glowing, wavy line component that snakes through the content
 const WavyLine = () => {
@@ -812,7 +812,7 @@ export default function Home() {
                        data-testid="button-download-resume"
                        onClick={() => {
                          const link = document.createElement('a');
-                         link.href = '/attached_assets/Mohmed_Vaid_Resume_1764032835208.docx';
+                         link.href = '/assets/Mohmed_Vaid_Resume_1764032835208.docx';
                          link.download = 'Mohmed_Vaid_Resume.docx';
                          link.click();
                        }}

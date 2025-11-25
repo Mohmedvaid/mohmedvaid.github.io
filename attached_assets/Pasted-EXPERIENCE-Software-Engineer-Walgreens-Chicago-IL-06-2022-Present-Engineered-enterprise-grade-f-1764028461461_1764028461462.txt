@@ -1,0 +1,43 @@
+EXPERIENCE
+Software Engineer
+Walgreens, Chicago IL (06/2022 - Present)
+Engineered enterprise-grade full-stack solutions with the MERN stack, deployed on Azure with automated CI/CD pipelines, reducing release cycle times by 35%.
+Designed and implemented AI-powered chatbots and internal tools using OpenAI APIs (GPT-4) and Microsoft Copilot integrations, improving customer engagement and automating internal support workflows.
+Built custom AI/ML workflows leveraging Stable Diffusion (image generation), Whisper (speech-to-text), and GPT-based APIs for voice and content generation; validated and tested models in Jupyter/Colab environments.
+Set up SonarQube with automated onboarding through Azure Pipelines, driving adoption across multiple teams and improving code quality metrics by 40%.
+Created backend agents and automation scripts to streamline developer productivity, leveraging GitHub Copilot and Microsoft 365 Copilot integrations for intelligent code assistance and workflow automation.
+Developed data engineering pipelines with Python to extract telemetry from Azure, Dynatrace, and other enterprise tools, aggregating into Azure Synapse lakehouse/warehouse for analytics; transformed data with notebooks and migrated pipelines into Microsoft Fabric + Power BI, enabling cross-team data insights.
+Resolved critical application bottlenecks and Redis caching issues, improving system performance and reducing downtime.
+Led cross-functional collaboration with product managers, UX designers, and QA to deliver scalable new features while maintaining high security and compliance standards.
+Designed and delivered a full-stack certificate renewal platform from scratch using Node.js, Express, React, and Next.js, deployed on Azure with CI/CD pipelines; automated compliance renewals and reduced manual certificate management effort by 90%.
+Developed internal productivity tools, including a report generation automation system and a custom JMeter UI, enabling teams to run performance/load tests on demand without scripting knowledge; improved adoption of performance testing practices across engineering teams.
+
+Automation Engineer
+Americaneagle.com, Des Plaines, IL (09/2019 – 06/2022)
+Developed and optimized Cypress and Selenium automation frameworks, enhancing release quality and reducing manual QA effort.
+Built and maintained automation scripts using JavaScript and TypeScript, integrated with Azure DevOps Pipelines for continuous regression and cross-browser testing.
+Created and executed functional test plans and automated test cases from system and business requirements, improving coverage and reducing regression bugs.
+Performed multi-browser testing (Chrome, Firefox, Edge, Safari) and RESTful API validation, ensuring consistent end-to-end quality across environments.
+Wrote complex SQL queries to validate data accuracy between web applications and backend databases.
+Actively collaborated with developers, analysts, and product owners in an Agile/Scrum environment to identify defects, retest fixes, and deliver stable releases.
+Wrote unit tests with JavaScript/TypeScript (Mocha, Jest) to catch issues earlier in the lifecycle.
+Used Jira for defect tracking and reporting, ensuring high-severity issues were prioritized and resolved.
+
+Full Stack Developer
+Upwork, Freelance, Remote (07/2020 - 06/2022)
+Designed and developed frontend UIs with HTML, CSS, JavaScript, and jQuery, while building scalable backends using Node.js and Express; delivered full end-to-end solutions for global clients.
+Structured relational and NoSQL databases (MySQL, MongoDB) with optimized queries, improving application reliability and reducing query response time by up to 40%.
+Integrated AI APIs (OpenAI GPT models) into client applications for text, image, and voice features, enabling smarter chat interfaces, content generation, and interactive experiences.
+Prototyped features with open-source AI models like Stable Diffusion (image generation) and Whisper (speech-to-text), validating AI-driven use cases in real-world web apps.
+Implemented cybersecurity best practices including input validation, authentication/authorization, and SQL injection prevention; conducted code audits to harden client systems against common vulnerabilities (OWASP Top 10).
+Reduced load time of multiple sites from 7+ seconds to under 2 seconds through asynchronous JavaScript, caching, and query optimizations, driving higher conversion rates for clients.
+Built and consumed RESTful APIs with robust error handling; created reusable modules to standardize integrations across client projects.
+Performed end-to-end testing using Mocha, Jest, and Sinon.js, ensuring high reliability before client handoff.
+Diagnosed and resolved critical bugs in fast-paced freelance environments, delivering stable applications under tight deadlines.
+EDUCATION
+Certificate in Full Stack Web Development
+Northwestern University, Evanston, IL — (01/2021 – 07/2022)
+
+
+Bachelor of Computer Science
+Northeastern Illinois University, Chicago, IL — (06/2017 – 12/2021)

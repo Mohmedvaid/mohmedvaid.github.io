@@ -1,4 +1,3 @@
-import { motion, useScroll, useSpring, useTransform, useMotionValue, useSpring as useSpringMotion } from "framer-motion";
 import { ArrowDown, ExternalLink, Github, Linkedin, Mail, Download, Moon, Sun, X, Heart, Code, Coffee, Gamepad2 } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -10,57 +9,6 @@ import { CustomCursor } from "@/components/CustomCursor";
 import { SnakeGame } from "@/components/SnakeGame";
 import { ContactDialog } from "@/components/ContactDialog";
 import userImage from '@assets/me.png';
-
-// A glowing, wavy line component that snakes through the content
-const WavyLine = () => {
-  const { scrollYProgress } = useScroll();
-  const pathLength = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
-
-  return (
-    <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-      <svg
-        className="w-full h-full"
-        preserveAspectRatio="none"
-        viewBox="0 0 100 2400" 
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#4F46E5" />
-            <stop offset="50%" stopColor="#9333EA" />
-            <stop offset="100%" stopColor="#EC4899" />
-          </linearGradient>
-          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-        
-        <motion.path
-          d="M 50 80 
-             C 50 150, 20 250, 20 400 
-             C 20 550, 80 650, 80 800 
-             C 80 950, 20 1050, 20 1200 
-             C 20 1400, 50 1500, 50 1700
-             C 50 1900, 80 2000, 50 2300"
-          stroke="url(#lineGradient)"
-          strokeWidth="0.8"
-          strokeLinecap="round"
-          fill="none"
-          style={{ pathLength }}
-          filter="url(#glow)"
-          initial={{ pathLength: 0, opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        />
-      </svg>
-    </div>
-  );
-};
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
@@ -88,13 +36,8 @@ const JourneyItem = ({ year, title, company, description, align = "left" }: { ye
       
       {/* Card Container */}
       <div className="w-full md:w-[40%] order-2 md:order-1">
-        <motion.div 
-          initial={{ opacity: 0, x: align === "left" ? -50 : 50, rotate: align === "left" ? -2 : 2 }}
-          whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-          transition={{ duration: 0.6, type: "spring" }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <Card className="border-none shadow-xl hover:shadow-2xl transition-all duration-500 bg-white/70 dark:bg-gray-900/70 backdrop-blur-md hover:-translate-y-1 group">
+        <div className="animate-fade-in-up">
+          <Card className="border-none shadow-xl hover:shadow-2xl transition-all duration-300 bg-white dark:bg-gray-900 hover:-translate-y-1 group">
             <CardHeader>
               <div className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500 mb-1">{year}</div>
               <CardTitle className="text-xl font-display text-gray-900 dark:text-white">{title}</CardTitle>
@@ -103,26 +46,21 @@ const JourneyItem = ({ year, title, company, description, align = "left" }: { ye
             <CardContent>
               <p className="text-muted-foreground dark:text-gray-400 leading-relaxed">{description}</p>
             </CardContent>
-            <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-black/5 dark:ring-white/10 group-hover:ring-purple-500/20 transition-all duration-500" />
           </Card>
-        </motion.div>
+        </div>
       </div>
       
       {/* Floating Marker with Dialog */}
       <div className="relative flex items-center justify-center w-full md:w-[20%] order-1 md:order-2">
         <Dialog>
           <DialogTrigger asChild>
-            <motion.button
-                initial={{ scale: 0, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                whileHover={{ scale: 1.2 }}
-                transition={{ delay: 0.3, type: "spring" }}
-                className="cursor-pointer h-8 w-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 z-20 shadow-[0_0_20px_rgba(147,51,234,0.5)] ring-4 ring-white dark:ring-gray-950 flex items-center justify-center group"
+            <button
+                className="cursor-pointer h-8 w-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 z-20 shadow-[0_0_20px_rgba(147,51,234,0.5)] ring-4 ring-white dark:ring-gray-950 flex items-center justify-center group hover:scale-110 transition-transform duration-200"
             >
               <div className="w-2 h-2 bg-white rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
-            </motion.button>
+            </button>
           </DialogTrigger>
-          <DialogContent className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl border-white/20 dark:border-gray-800 max-w-md rounded-3xl">
+          <DialogContent className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800 max-w-md rounded-3xl">
             <div className="flex flex-col items-center text-center p-4">
               <div className="h-24 w-24 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 mb-6 flex items-center justify-center shadow-lg">
                 <span className="text-white font-bold text-sm">{year.split(' ')[0]}</span>
@@ -146,14 +84,11 @@ const JourneyItem = ({ year, title, company, description, align = "left" }: { ye
 };
 
 const ProjectCard = ({ title, desc, tags }: { title: string, desc: string, tags: string[] }) => (
-  <motion.div 
-    whileHover={{ y: -10 }}
-    className="group"
-  >
-    <Card className="h-full border-none shadow-lg overflow-hidden bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 relative z-10">
+  <div className="group">
+    <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl transition-all duration-300 relative z-10 hover:-translate-y-1">
       <div className="h-48 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-700 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 dark:group-hover:from-indigo-500/20 dark:group-hover:to-purple-500/20 transition-colors relative flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#475569_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
-        <ExternalLink className="w-8 h-8 text-indigo-500/40 dark:text-indigo-400/40 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all scale-90 group-hover:scale-110 duration-500" />
+        <ExternalLink className="w-8 h-8 text-indigo-500/40 dark:text-indigo-400/40 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all group-hover:scale-110 duration-300" />
       </div>
       <CardHeader>
         <CardTitle className="font-display text-xl group-hover:text-indigo-700 dark:group-hover:text-indigo-400 transition-colors text-gray-900 dark:text-white">{title}</CardTitle>
@@ -169,80 +104,20 @@ const ProjectCard = ({ title, desc, tags }: { title: string, desc: string, tags:
         <p className="text-muted-foreground dark:text-gray-400 leading-relaxed">{desc}</p>
       </CardContent>
     </Card>
-  </motion.div>
+  </div>
 );
 
-// Interactive text component with wave effect
+// Simple text component
 const InteractiveText = () => {
-  const textRef = useRef<HTMLHeadingElement>(null);
-  const [letterPositions, setLetterPositions] = useState<{ x: number; y: number }[]>([]);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const text = "I'm Mohmed.";
-  const letters = text.split('');
-
-  useEffect(() => {
-    if (textRef.current) {
-      const spans = textRef.current.querySelectorAll('span');
-      const positions = Array.from(spans).map(span => {
-        const rect = span.getBoundingClientRect();
-        return {
-          x: rect.left + rect.width / 2,
-          y: rect.top + rect.height / 2
-        };
-      });
-      setLetterPositions(positions);
-    }
-  }, []);
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    mouseX.set(e.clientX);
-    mouseY.set(e.clientY);
-  };
-
   return (
-    <motion.h2 
-      ref={textRef}
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.6, duration: 0.8 }}
-      className="text-5xl md:text-7xl font-display font-bold text-center mb-6 drop-shadow-lg text-black dark:text-white relative cursor-pointer"
-      onMouseMove={handleMouseMove}
-    >
+    <h2 className="text-5xl md:text-7xl font-display font-bold text-center mb-6 drop-shadow-lg text-black dark:text-white relative animate-fade-in">
       <span className="relative inline-block">
         <span className="absolute inset-0 bg-gradient-to-r from-indigo-500/30 to-purple-500/30 blur-2xl rounded-full scale-110" />
-        <span className="relative inline-flex">
-          {letters.map((letter, i) => {
-            const position = letterPositions[i];
-            return (
-              <motion.span
-                key={i}
-                className={letter === ' ' ? 'inline-block w-2' : 'inline-block'}
-                style={{
-                  display: 'inline-block',
-                  position: 'relative'
-                }}
-                whileHover={{ scale: 1.2, y: -10 }}
-                transition={{ type: "spring", stiffness: 300, damping: 10 }}
-                animate={{
-                  scale: position ? 1 : 1,
-                  y: 0
-                }}
-              >
-                {letter === ' ' ? '\u00A0' : (
-                  i >= 4 && i <= 10 ? (
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-                      {letter}
-                    </span>
-                  ) : letter
-                )}
-              </motion.span>
-            );
-          })}
+        <span className="relative">
+          I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Mohmed</span>.
         </span>
       </span>
-    </motion.h2>
+    </h2>
   );
 };
 
@@ -269,31 +144,23 @@ export default function Home() {
       <CustomCursor />
       
       {/* Floating Game Button */}
-      <motion.button
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ delay: 1 }}
+      <button
         onClick={() => setShowGame(true)}
-        className="fixed bottom-6 right-6 z-50 h-14 w-14 md:h-16 md:w-16 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg hover:shadow-xl flex items-center justify-center group"
+        className="fixed bottom-6 right-6 z-50 h-14 w-14 md:h-16 md:w-16 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg hover:shadow-xl flex items-center justify-center group animate-scale-in hover:scale-110 active:scale-95 transition-transform duration-200"
         aria-label="Play Snake Game"
       >
         <Gamepad2 className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:scale-110 transition-transform" />
         <div className="absolute -top-1 -right-1 h-3 w-3 bg-green-400 rounded-full animate-pulse" />
-      </motion.button>
+      </button>
 
       {/* Snake Game */}
       <SnakeGame isOpen={showGame} onClose={() => setShowGame(false)} />
       
       {/* Contact Dialog */}
       <ContactDialog isOpen={showContact} onClose={() => setShowContact(false)} />
-      
-      {/* The Wavy Line Background */}
-      <WavyLine />
 
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-4 bg-white/60 dark:bg-gray-950/60 backdrop-blur-xl border-b border-white/20 dark:border-white/5 shadow-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-4 bg-white/95 dark:bg-gray-950/95 border-b border-gray-200 dark:border-gray-800 shadow-sm">
         <div className="font-display font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">MOHMED VAID</div>
         <div className="flex gap-4 items-center">
            <div className="hidden md:flex gap-2 mr-4">
@@ -335,23 +202,13 @@ export default function Home() {
           <div className="flex flex-col items-center text-center relative">
             
             {/* Text Behind Image */}
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
-              className="text-[24vw] md:text-[32vw] leading-none font-display font-bold tracking-tighter text-black/5 dark:text-white/5 absolute top-[8%] md:top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap select-none pointer-events-none z-0"
-            >
+            <h1 className="text-[24vw] md:text-[32vw] leading-none font-display font-bold tracking-tighter text-black/5 dark:text-white/5 absolute top-[8%] md:top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap select-none pointer-events-none z-0 animate-fade-in">
               AL<span className="inline-block -translate-y-[0.35em]">O</span>HA
-            </motion.h1>
+            </h1>
 
             <div className="relative z-10 mt-2">
               {/* Main Image Container */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.9, y: 50 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                className="relative group"
-              >
+              <div className="relative group animate-fade-in-up">
                 {/* Glowing backdrop behind image */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 to-purple-500/20 rounded-full blur-3xl opacity-60 group-hover:opacity-80 transition-opacity duration-700 scale-110" />
                 
@@ -359,24 +216,19 @@ export default function Home() {
                 <img 
                   src={userImage} 
                   alt="Developer" 
-                  className="relative w-auto h-[70vh] md:h-[90vh] object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-[1.02] z-20"
+                  className="relative w-auto h-[70vh] md:h-[90vh] object-contain drop-shadow-2xl transition-transform duration-300 group-hover:scale-[1.02] z-20"
                   style={{ maskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to bottom, black 85%, transparent 100%)' }}
                 />
                 
-              </motion.div>
+              </div>
 
               {/* Overlay Text */}
               <div className="absolute bottom-20 left-1/2 -translate-x-1/2 w-full max-w-3xl z-30">
                 <InteractiveText />
                 
-                <motion.p 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8, duration: 0.8 }}
-                  className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 font-medium max-w-xl mx-auto leading-relaxed backdrop-blur-sm bg-white/50 dark:bg-black/50 p-4 rounded-2xl border border-white/40 dark:border-white/10"
-                >
+                <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 font-medium max-w-xl mx-auto leading-relaxed bg-white/90 dark:bg-gray-900/90 p-4 rounded-2xl border border-gray-200 dark:border-gray-800 animate-fade-in">
                   Software Engineer from <span className="text-black dark:text-white font-bold">Chicago</span>, crafting AI-powered solutions and scalable systems.
-                </motion.p>
+                </p>
               </div>
             </div>
 
@@ -387,15 +239,10 @@ export default function Home() {
       {/* Journey Section */}
       <section className="py-32 relative z-10">
         <div className="container max-w-5xl mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-32"
-          >
+          <div className="text-center mb-32 animate-fade-in">
             <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-bold tracking-widest uppercase mb-4">Timeline</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">My Journey</h2>
-          </motion.div>
+          </div>
 
           <div className="relative">
             <JourneyItem 
@@ -426,15 +273,10 @@ export default function Home() {
       {/* Expertise Section */}
       <section className="py-32 relative z-10">
         <div className="container max-w-6xl mx-auto px-4">
-           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
+           <div className="text-center mb-20 animate-fade-in">
             <span className="inline-block py-1 px-3 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-bold tracking-widest uppercase mb-4">Skills</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">Expertise</h2>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -442,13 +284,9 @@ export default function Home() {
               { title: "Creative Coding", skills: ["WebGL", "Three.js", "GSAP", "Framer Motion", "Canvas API"] },
               { title: "Backend & Cloud", skills: ["Node.js", "PostgreSQL", "AWS", "Serverless", "Docker"] }
             ].map((category, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-white dark:border-white/5 hover:shadow-xl hover:border-purple-200 dark:hover:border-purple-800 transition-all duration-300 group"
+                className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:border-purple-200 dark:hover:border-purple-800 transition-all duration-300 group animate-fade-in-up"
               >
                 <h3 className="font-display text-xl font-bold mb-6 text-gray-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-purple-400 transition-colors">{category.title}</h3>
                 <div className="flex flex-wrap gap-3">
@@ -458,7 +296,7 @@ export default function Home() {
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -467,18 +305,13 @@ export default function Home() {
       {/* About Me Section */}
       <section className="py-32 bg-white/30 dark:bg-gray-900/30 relative z-10">
         <div className="container max-w-4xl mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16 animate-fade-in">
             <span className="inline-block py-1 px-3 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-sm font-bold tracking-widest uppercase mb-4">About</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">Beyond the Code</h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               When I'm not crafting digital experiences, I'm exploring the intersection of technology, design, and human connection.
             </p>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -486,51 +319,36 @@ export default function Home() {
               { icon: Code, title: "Continuous Learning", text: "Currently exploring AI/ML integration in web apps and experimenting with WebGPU for next-gen graphics." },
               { icon: Coffee, title: "Outside Work", text: "Coffee enthusiast, analog photography lover, and weekend hiker. Always looking for the next creative challenge." }
             ].map((item, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.15 }}
-                viewport={{ once: true }}
-                className="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl text-center group hover:bg-white dark:hover:bg-gray-800 transition-all duration-300 border border-transparent hover:border-purple-200 dark:hover:border-purple-800"
+                className="bg-white dark:bg-gray-800 p-6 rounded-2xl text-center group hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-800 hover:border-purple-200 dark:hover:border-purple-800 animate-fade-in-up"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 mb-4 group-hover:scale-110 transition-transform duration-300">
                   <item.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="font-display font-bold text-lg mb-2 text-gray-900 dark:text-white">{item.title}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{item.text}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Easter Egg Hint */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            viewport={{ once: true }}
-            className="mt-16 text-center"
-          >
+          <div className="mt-16 text-center animate-fade-in">
             <p className="text-sm text-gray-400 dark:text-gray-600 flex items-center justify-center gap-2">
               <Gamepad2 className="w-4 h-4" />
               Psst... Press "G" for a fun surprise
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
       <section className="py-32 relative z-10">
         <div className="container max-w-6xl mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
+          <div className="text-center mb-20 animate-fade-in">
             <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-bold tracking-widest uppercase mb-4">Testimonials</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">What People Say</h2>
-          </motion.div>
+          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
@@ -553,14 +371,8 @@ export default function Home() {
                 avatar: "EW"
               }
             ].map((testimonial, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <Card className="h-full border-none shadow-lg bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300">
+              <div key={i} className="animate-fade-in-up">
+                <Card className="h-full border-none shadow-lg bg-white dark:bg-gray-900 hover:shadow-xl transition-all duration-300">
                   <CardContent className="p-8">
                     <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 italic">
                       "{testimonial.quote}"
@@ -576,7 +388,7 @@ export default function Home() {
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -585,22 +397,14 @@ export default function Home() {
       {/* Projects Section */}
       <section className="py-32 relative z-10">
         <div className="container max-w-6xl mx-auto px-4">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
+          <div className="text-center mb-20 animate-fade-in">
              <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-bold tracking-widest uppercase mb-4">Portfolio</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">Selected Work</h2>
-          </motion.div>
+          </div>
 
           <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
-            <motion.div 
-              whileHover={{ y: -10 }}
-              className="group w-full md:w-[calc(50%-1rem)] max-w-md"
-            >
-              <Card className="h-full border-none shadow-lg overflow-hidden bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 relative z-10">
+            <div className="group w-full md:w-[calc(50%-1rem)] max-w-md animate-fade-in-up">
+              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10">
                 <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-200 dark:from-blue-900 dark:to-purple-800 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 dark:group-hover:from-indigo-500/20 dark:group-hover:to-purple-500/20 transition-colors relative flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#475569_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
                   <Code className="w-12 h-12 text-indigo-600/60 dark:text-indigo-400/60 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all scale-90 group-hover:scale-110 duration-500" />
@@ -640,13 +444,10 @@ export default function Home() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              whileHover={{ y: -10 }}
-              className="group w-full md:w-[calc(50%-1rem)] max-w-md"
-            >
-              <Card className="h-full border-none shadow-lg overflow-hidden bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm hover:shadow-2xl transition-all duration-300 relative z-10">
+            <div className="group w-full md:w-[calc(50%-1rem)] max-w-md animate-fade-in-up">
+              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10">
                 <div className="h-48 bg-gradient-to-br from-green-100 to-blue-200 dark:from-green-900 dark:to-blue-800 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 dark:group-hover:from-indigo-500/20 dark:group-hover:to-purple-500/20 transition-colors relative flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#475569_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
                   <div className="flex gap-2">
@@ -690,7 +491,7 @@ export default function Home() {
                   </div>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -699,15 +500,10 @@ export default function Home() {
       <section className="py-32 bg-black dark:bg-black text-white relative z-10 overflow-hidden mt-20 rounded-t-[3rem]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-black to-black opacity-50" />
         <div className="container max-w-4xl mx-auto px-4 relative z-10 text-center">
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-5xl md:text-7xl font-display font-bold mb-8 tracking-tight"
-          >
+          <h2 className="text-5xl md:text-7xl font-display font-bold mb-8 tracking-tight animate-fade-in">
             Let's build something <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">extraordinary.</span>
-          </motion.h2>
+          </h2>
           
           <div className="flex flex-col md:flex-row gap-6 justify-center items-center mt-16">
             <Dialog>
@@ -812,7 +608,7 @@ export default function Home() {
                        data-testid="button-download-resume"
                        onClick={() => {
                          const link = document.createElement('a');
-                         link.href = '/assets/Mohmed_Vaid_Resume.docx';
+                         link.href = '/attached_assets/Mohmed_Vaid_Resume_1764032835208.docx';
                          link.download = 'Mohmed_Vaid_Resume.docx';
                          link.click();
                        }}

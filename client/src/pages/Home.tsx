@@ -1,4 +1,4 @@
-import { ArrowDown, ExternalLink, Github, Linkedin, Mail, Download, Moon, Sun, X, Heart, Code, Coffee, Gamepad2, Rocket, Wine } from "lucide-react";
+import { ArrowDown, ExternalLink, Github, Linkedin, Mail, Download, Moon, Sun, X, Heart, Code, Coffee, Gamepad2, Wine, Rocket } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -297,11 +297,11 @@ export default function Home() {
             </svg>
             
             <JourneyItem 
-              year="06/2022 - Present"
-              title="Software Engineer"
-              company="Walgreens, Chicago IL"
-              logo="/assets/logos/wag.webp"
-              description="Engineered enterprise-grade full-stack solutions with MERN stack on Azure. Built AI-powered chatbots using OpenAI GPT-4 and Microsoft Copilot. Developed custom AI/ML workflows with Stable Diffusion and Whisper APIs. Created data engineering pipelines aggregating telemetry into Azure Synapse and Microsoft Fabric for analytics."
+              year="07/2020 - 06/2022"
+              title="Full Stack Developer"
+              company="Upwork, Freelance Remote"
+              logo="/assets/logos/upwork-logo.webp"
+              description="Designed full-stack solutions with Node.js, Express, React, and MongoDB. Integrated OpenAI GPT models for AI features. Prototyped with Stable Diffusion and Whisper APIs. Reduced site load times from 7+ seconds to under 2 seconds through optimization. Implemented cybersecurity best practices and OWASP Top 10 protections."
               align="left"
             />
             <JourneyItem 
@@ -313,11 +313,11 @@ export default function Home() {
               align="right"
             />
             <JourneyItem 
-              year="07/2020 - 06/2022"
-              title="Full Stack Developer"
-              company="Upwork, Freelance Remote"
-              logo="/assets/logos/upwork-logo.webp"
-              description="Designed full-stack solutions with Node.js, Express, React, and MongoDB. Integrated OpenAI GPT models for AI features. Prototyped with Stable Diffusion and Whisper APIs. Reduced site load times from 7+ seconds to under 2 seconds through optimization. Implemented cybersecurity best practices and OWASP Top 10 protections."
+              year="06/2022 - Present"
+              title="Software Engineer"
+              company="Walgreens, Chicago IL"
+              logo="/assets/logos/wag.webp"
+              description="Engineered enterprise-grade full-stack solutions with MERN stack on Azure. Built AI-powered chatbots using OpenAI GPT-4 and Microsoft Copilot. Developed custom AI/ML workflows with Stable Diffusion and Whisper APIs. Created data engineering pipelines aggregating telemetry into Azure Synapse and Microsoft Fabric for analytics."
               align="left"
             />
           </div>
@@ -480,7 +480,7 @@ export default function Home() {
 
           <div className="flex flex-wrap justify-center gap-8 max-w-5xl mx-auto">
             <div className="group w-full md:w-[calc(50%-1rem)] max-w-md animate-fade-in-up">
-              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10">
+              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10 flex flex-col">
                 <div className="h-48 bg-gradient-to-br from-blue-100 to-purple-200 dark:from-blue-900 dark:to-purple-800 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 dark:group-hover:from-indigo-500/20 dark:group-hover:to-purple-500/20 transition-colors relative flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#475569_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
                   <Code className="w-12 h-12 text-indigo-600/60 dark:text-indigo-400/60 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-all scale-90 group-hover:scale-110 duration-500" />
@@ -495,11 +495,11 @@ export default function Home() {
                     ))}
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4">
+                <CardContent className="flex flex-col flex-1">
+                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4 flex-1">
                     AI-powered workflow builder enabling intelligent automation agents to handle complex tasks through intuitive drag-and-drop interface.
                   </p>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 mt-auto">
                     <Button 
                       size="sm" 
                       className="gap-2"
@@ -523,7 +523,7 @@ export default function Home() {
             </div>
 
             <div className="group w-full md:w-[calc(50%-1rem)] max-w-md animate-fade-in-up">
-              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10">
+              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10 flex flex-col">
                 <div className="h-48 bg-gradient-to-br from-green-100 to-blue-200 dark:from-green-900 dark:to-blue-800 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 dark:group-hover:from-indigo-500/20 dark:group-hover:to-purple-500/20 transition-colors relative flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#475569_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
                   <div className="flex gap-2">
@@ -542,11 +542,11 @@ export default function Home() {
                     ))}
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4">
+                <CardContent className="flex flex-col flex-1">
+                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4 flex-1">
                     Interactive visualization of sorting and pathfinding algorithms with step-by-step animation and controls.
                   </p>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 mt-auto">
                     <Button 
                       size="sm" 
                       className="gap-2"
@@ -570,7 +570,7 @@ export default function Home() {
             </div>
 
             <div className="group w-full md:w-[calc(50%-1rem)] max-w-md animate-fade-in-up">
-              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10">
+              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10 flex flex-col">
                 <div className="h-48 bg-gradient-to-br from-orange-100 to-red-200 dark:from-orange-900 dark:to-red-800 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 dark:group-hover:from-indigo-500/20 dark:group-hover:to-purple-500/20 transition-colors relative flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#475569_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
                   <Wine className="w-12 h-12 text-orange-600/60 dark:text-orange-400/60 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-all scale-90 group-hover:scale-110 duration-500" />
@@ -585,11 +585,11 @@ export default function Home() {
                     ))}
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4">
+                <CardContent className="flex flex-col flex-1">
+                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4 flex-1">
                     Discover cocktails filtered by alcohol type with ingredients, recipes, and saved favorites. Find nearby bars serving your favorite drinks using Google Maps integration.
                   </p>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 mt-auto">
                     <Button 
                       size="sm" 
                       className="gap-2"
@@ -613,7 +613,7 @@ export default function Home() {
             </div>
 
             <div className="group w-full md:w-[calc(50%-1rem)] max-w-md animate-fade-in-up">
-              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10">
+              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10 flex flex-col">
                 <div className="h-48 bg-gradient-to-br from-purple-100 to-indigo-200 dark:from-purple-900 dark:to-indigo-800 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 dark:group-hover:from-indigo-500/20 dark:group-hover:to-purple-500/20 transition-colors relative flex items-center justify-center overflow-hidden">
                   <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#475569_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
                   <Rocket className="w-12 h-12 text-purple-600/60 dark:text-purple-400/60 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-all scale-90 group-hover:scale-110 duration-500" />
@@ -628,11 +628,11 @@ export default function Home() {
                     ))}
                   </div>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4">
+                <CardContent className="flex flex-col flex-1">
+                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4 flex-1">
                     Explore stunning NASA images with search functionality and date filtering. Browse astronomical photos, discover cosmic wonders, and filter by specific dates to view space imagery from different time periods.
                   </p>
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 mt-auto">
                     <Button 
                       size="sm" 
                       className="gap-2"

@@ -1,4 +1,4 @@
-import { ArrowDown, ExternalLink, Github, Linkedin, Mail, Download, Moon, Sun, X, Heart, Code, Coffee, Gamepad2 } from "lucide-react";
+import { ArrowDown, ExternalLink, Github, Linkedin, Mail, Download, Moon, Sun, X, Heart, Code, Coffee, Gamepad2, Rocket, Wine } from "lucide-react";
 import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -568,6 +568,92 @@ export default function Home() {
                 </CardContent>
               </Card>
             </div>
+
+            <div className="group w-full md:w-[calc(50%-1rem)] max-w-md animate-fade-in-up">
+              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10">
+                <div className="h-48 bg-gradient-to-br from-orange-100 to-red-200 dark:from-orange-900 dark:to-red-800 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 dark:group-hover:from-indigo-500/20 dark:group-hover:to-purple-500/20 transition-colors relative flex items-center justify-center overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#475569_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
+                  <Wine className="w-12 h-12 text-orange-600/60 dark:text-orange-400/60 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-all scale-90 group-hover:scale-110 duration-500" />
+                </div>
+                <CardHeader>
+                  <CardTitle className="font-display text-xl group-hover:text-indigo-700 dark:group-hover:text-indigo-400 transition-colors text-gray-900 dark:text-white">Shaker</CardTitle>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {["JavaScript", "Materialize.css", "jQuery"].map(tag => (
+                      <Badge key={tag} variant="secondary" className="bg-indigo-50 dark:bg-indigo-900/30 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border-transparent transition-colors">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4">
+                    Discover cocktails filtered by alcohol type with ingredients, recipes, and saved favorites. Find nearby bars serving your favorite drinks using Google Maps integration.
+                  </p>
+                  <div className="flex gap-3">
+                    <Button 
+                      size="sm" 
+                      className="gap-2"
+                      onClick={() => window.open('https://json-d3rulo.github.io/shaker/', '_blank')}
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </Button>
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      className="gap-2"
+                      onClick={() => window.open('https://github.com/json-d3Rulo/shaker', '_blank')}
+                    >
+                      <Github className="w-4 h-4" />
+                      Code
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            <div className="group w-full md:w-[calc(50%-1rem)] max-w-md animate-fade-in-up">
+              <Card className="h-full border-none shadow-lg overflow-hidden bg-white dark:bg-gray-900 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative z-10">
+                <div className="h-48 bg-gradient-to-br from-purple-100 to-indigo-200 dark:from-purple-900 dark:to-indigo-800 group-hover:from-indigo-500/10 group-hover:to-purple-500/10 dark:group-hover:from-indigo-500/20 dark:group-hover:to-purple-500/20 transition-colors relative flex items-center justify-center overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] dark:bg-[radial-gradient(#475569_1px,transparent_1px)] [background-size:16px_16px] opacity-50" />
+                  <Rocket className="w-12 h-12 text-purple-600/60 dark:text-purple-400/60 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-all scale-90 group-hover:scale-110 duration-500" />
+                </div>
+                <CardHeader>
+                  <CardTitle className="font-display text-xl group-hover:text-indigo-700 dark:group-hover:text-indigo-400 transition-colors text-gray-900 dark:text-white">Spacetagram</CardTitle>
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {["React", "Bootstrap", "NASA API"].map(tag => (
+                      <Badge key={tag} variant="secondary" className="bg-indigo-50 dark:bg-indigo-900/30 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border-transparent transition-colors">
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4">
+                    Explore stunning NASA images with search functionality and date filtering. Browse astronomical photos, discover cosmic wonders, and filter by specific dates to view space imagery from different time periods.
+                  </p>
+                  <div className="flex gap-3">
+                    <Button 
+                      size="sm" 
+                      className="gap-2"
+                      onClick={() => window.open('https://mohmedvaid.github.io/spacestagram/', '_blank')}
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </Button>
+                    <Button 
+                      size="sm" 
+                      variant="outline"
+                      className="gap-2"
+                      onClick={() => window.open('https://github.com/mohmedvaid/spacestagram', '_blank')}
+                    >
+                      <Github className="w-4 h-4" />
+                      Code
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
@@ -594,16 +680,16 @@ export default function Home() {
                         {/* Preview Notice */}
                         <div className="mb-6 p-4 bg-indigo-50 border-l-4 border-indigo-600 rounded-r-lg">
                           <p className="text-sm text-indigo-900">
-                            <span className="font-semibold">📄 Preview Mode:</span> This is a condensed overview. Download the full resume below for complete details and formatting.
+                            <span className="font-semibold">📄 Preview Mode:</span> This is a condensed overview. Download the full resume below for complete details.
                           </p>
                         </div>
 
                         {/* Header */}
                         <div className="text-center mb-8 pb-6 border-b-2 border-indigo-600">
                           <h1 className="text-4xl font-display font-bold text-gray-900 mb-2">MOHMED VAID</h1>
-                          <p className="text-gray-600">Skokie, IL 60076 | mohmedvaid@gmail.com | (307) 213-9838</p>
+                          <p className="text-gray-600">Skokie, IL 60076 | mohmedvaid@gmail.com</p>
                           <p className="text-sm text-indigo-600 mt-1">
-                            LinkedIn: linkedin.com/in/mohmedvaid | GitHub: github.com/mohmedvaid | Portfolio: mohmedvaid.github.io
+                            linkedin.com/in/mohmedvaid | github.com/mohmedvaid | mohmedvaid.github.io
                           </p>
                         </div>
 
@@ -611,7 +697,7 @@ export default function Home() {
                         <section className="mb-6">
                           <h2 className="text-xl font-bold text-indigo-600 mb-2 uppercase tracking-wide">Profile Summary</h2>
                           <p className="text-gray-700 leading-relaxed">
-                            Full Stack Engineer skilled in building scalable web apps, automation pipelines, and AI-driven solutions with JavaScript, TypeScript, Python, and Azure. Experienced in integrating OpenAI APIs, modern DevOps, and secure cloud/data workflows to deliver high-impact products.
+                            Full Stack Engineer with 5+ years in Fortune 500 and freelance roles, fusing AI and DevOps for scalable web apps and automation pipelines. Expertise in TypeScript, JavaScript, Python, Azure, OpenAI GPT models, and Copilot tools to deliver secure, end-to-end cloud workflows.
                           </p>
                         </section>
 
@@ -623,7 +709,7 @@ export default function Home() {
                             <p className="text-gray-700"><span className="font-semibold">Web & App Development:</span> Node.js, Express, React, Redux, Next.js, React Native, RESTful APIs, GraphQL</p>
                             <p className="text-gray-700"><span className="font-semibold">AI & ML Tools:</span> OpenAI API (GPT-4, GPT-4o), GitHub Copilot, Microsoft 365 Copilot, Stable Diffusion, Whisper, LangChain</p>
                             <p className="text-gray-700"><span className="font-semibold">DevOps & Cloud:</span> Azure DevOps, Docker, Kubernetes, Jenkins, GitHub Actions, SonarQube</p>
-                            <p className="text-gray-700 italic">...and more (see full resume for complete list)</p>
+                            <p className="text-gray-700 italic">...and more (Click Download for full resume)</p>
                           </div>
                         </section>
 
@@ -639,7 +725,7 @@ export default function Home() {
                               <li>Built AI-powered chatbots using OpenAI GPT-4 and Microsoft Copilot integrations</li>
                               <li>Developed data engineering pipelines aggregating telemetry into Azure Synapse and Microsoft Fabric</li>
                               <li>Created full-stack certificate renewal platform reducing manual effort by 90%</li>
-                              <li className="italic">...and more (see full resume)</li>
+                              <li className="italic">...and more</li>
                             </ul>
                           </div>
 
@@ -651,7 +737,7 @@ export default function Home() {
                               <li>Built automation scripts with JavaScript/TypeScript integrated with Azure DevOps Pipelines</li>
                               <li>Performed multi-browser testing and RESTful API validation across environments</li>
                               <li>Collaborated in Agile/Scrum environment delivering stable releases</li>
-                              <li className="italic">...and more (see full resume)</li>
+                              <li className="italic">...and more</li>
                             </ul>
                           </div>
 
@@ -663,7 +749,7 @@ export default function Home() {
                               <li>Integrated OpenAI GPT models for AI-powered features in client applications</li>
                               <li>Reduced site load times from 7+ seconds to under 2 seconds through optimizations</li>
                               <li>Implemented security best practices including OWASP Top 10 compliance</li>
-                              <li className="italic">...and more (see full resume)</li>
+                              <li className="italic">...and more</li>
                             </ul>
                           </div>
                         </section>
@@ -684,8 +770,8 @@ export default function Home() {
                        data-testid="button-download-resume"
                        onClick={() => {
                          const link = document.createElement('a');
-                         link.href = '/attached_assets/Mohmed_Vaid_Resume_1764032835208.docx';
-                         link.download = 'Mohmed_Vaid_Resume.docx';
+                         link.href = '/attached_assets/Mohmed_Vaid_Resume.pdf';
+                         link.download = 'Mohmed_Vaid_Resume.pdf';
                          link.click();
                        }}
                      >

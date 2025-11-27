@@ -27,7 +27,7 @@ const ThemeToggle = () => {
   );
 };
 
-const JourneyItem = ({ year, title, company, description, align = "left" }: { year: string, title: string, company: string, description: string, align?: "left" | "right" }) => {
+const JourneyItem = ({ year, title, company, description, align = "left", logo }: { year: string, title: string, company: string, description: string, align?: "left" | "right", logo?: string }) => {
   return (
     <div className={`flex flex-col items-center justify-between w-full mb-12 md:mb-16 relative z-10 gap-6 md:gap-0 ${align === "right" ? "md:flex-row-reverse" : "md:flex-row"}`}>
       
@@ -78,7 +78,25 @@ const JourneyItem = ({ year, title, company, description, align = "left" }: { ye
         </Dialog>
       </div>
       
-      <div className="hidden md:block w-[40%] order-3" />
+      {/* Company Logo Placeholder */}
+      <div className="hidden md:flex w-[40%] order-3 items-center justify-center">
+        <div className="w-24 h-24 rounded-full border-2 border-indigo-200 dark:border-indigo-800 flex items-center justify-center shadow-lg overflow-hidden group-hover:scale-105 transition-transform duration-300 bg-white dark:bg-gray-800">
+          {logo ? (
+            <img 
+              src={logo} 
+              alt={`${company} logo`}
+              className="w-full h-full object-cover rounded-full"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-indigo-400 dark:text-indigo-600 text-xs font-medium">
+              Logo
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 };
@@ -114,7 +132,7 @@ const InteractiveText = () => {
       <span className="relative inline-block">
         <span className="absolute inset-0 bg-gradient-to-r from-indigo-500/30 to-purple-500/30 blur-2xl rounded-full scale-110" />
         <span className="relative">
-          I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">Mohmed</span>.
+          I'm <span className="text-white dark:text-white font-bold text-6xl md:text-8xl [text-shadow:_0_0_20px_rgba(147,51,234,0.4),_0_0_40px_rgba(79,70,229,0.3)] [font-family:var(--font-creative)] [font-weight:700] [text-stroke:1px_rgba(147,51,234,0.3)]">Mohmed</span>.
         </span>
       </span>
     </h2>
@@ -247,10 +265,42 @@ export default function Home() {
           </div>
 
           <div className="relative">
+            {/* Mobile Timeline Line - straight line from first dot to Full Stack card */}
+            <div className="md:hidden absolute left-1/2 top-0 bottom-0 w-0.5 -translate-x-1/2 z-0 pointer-events-none">
+              <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/40 via-purple-500/40 to-pink-500/40" />
+            </div>
+            
+            {/* Desktop Timeline Line connecting logos and dots */}
+            <svg className="hidden md:block absolute inset-0 w-full h-full pointer-events-none z-0" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ overflow: 'visible' }}>
+              <defs>
+                <linearGradient id="timelineLineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" style={{ stopColor: '#6366f1', stopOpacity: 0.4 }} />
+                  <stop offset="50%" style={{ stopColor: '#9333ea', stopOpacity: 0.4 }} />
+                  <stop offset="100%" style={{ stopColor: '#ec4899', stopOpacity: 0.4 }} />
+                </linearGradient>
+              </defs>
+              {/* Path: Walgreens logo -> dot -> dot -> AE logo -> straight down behind card -> through dot -> Upwork logo */}
+              <path
+                d="M 80 15 
+                   L 50 15
+                   L 50 50
+                   L 20 50
+                   L 20 85
+                   L 50 85
+                   L 80 85"
+                stroke="url(#timelineLineGradient)"
+                strokeWidth="0.6"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            
             <JourneyItem 
               year="06/2022 - Present"
               title="Software Engineer"
               company="Walgreens, Chicago IL"
+              logo="/assets/logos/wag.webp"
               description="Engineered enterprise-grade full-stack solutions with MERN stack on Azure. Built AI-powered chatbots using OpenAI GPT-4 and Microsoft Copilot. Developed custom AI/ML workflows with Stable Diffusion and Whisper APIs. Created data engineering pipelines aggregating telemetry into Azure Synapse and Microsoft Fabric for analytics."
               align="left"
             />
@@ -258,6 +308,7 @@ export default function Home() {
               year="09/2019 - 06/2022"
               title="Automation Engineer"
               company="Americaneagle.com, Des Plaines IL"
+              logo="/assets/logos/ae-logo.webp"
               description="Developed Cypress and Selenium automation frameworks integrated with Azure DevOps Pipelines. Built automation scripts using TypeScript, performed multi-browser testing, and wrote unit tests with Jest and Mocha. Collaborated in Agile/Scrum environment to deliver stable releases."
               align="right"
             />
@@ -265,6 +316,7 @@ export default function Home() {
               year="07/2020 - 06/2022"
               title="Full Stack Developer"
               company="Upwork, Freelance Remote"
+              logo="/assets/logos/upwork-logo.webp"
               description="Designed full-stack solutions with Node.js, Express, React, and MongoDB. Integrated OpenAI GPT models for AI features. Prototyped with Stable Diffusion and Whisper APIs. Reduced site load times from 7+ seconds to under 2 seconds through optimization. Implemented cybersecurity best practices and OWASP Top 10 protections."
               align="left"
             />
@@ -283,11 +335,14 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">Expertise</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { title: "Frontend Architecture", skills: ["React", "Next.js", "TypeScript", "State Management", "Micro-frontends"] },
-              { title: "Creative Coding", skills: ["WebGL", "Three.js", "GSAP", "Framer Motion", "Canvas API"] },
-              { title: "Backend & Cloud", skills: ["Node.js", "PostgreSQL", "AWS", "Serverless", "Docker"] }
+              { title: "Frontend Architecture", skills: ["React", "Next.js", "TypeScript", "Vite", "Micro-frontends", "Tailwind CSS"] },
+              { title: "Creative Coding", skills: ["WebGL", "Three.js", "GSAP", "Framer Motion", "Canvas API", "SVG Animation"] },
+              { title: "Backend & Cloud", skills: ["Node.js", "Azure", "AWS", "CI/CD Pipelines", "Docker", "Serverless", "Azure DevOps", "Kubernetes"] },
+              { title: "Database Systems", skills: ["PostgreSQL", "MongoDB", "Redis", "Query Optimization"] },
+              { title: "Algorithms & Data Structures", skills: ["Algorithm Design", "Complexity Analysis", "Graph Algorithms", "Dynamic Programming"] },
+              { title: "AI & Machine Learning", skills: ["OpenAI GPT", "Stable Diffusion", "Whisper API", "AI Integration", "ML Workflows"] }
             ].map((category, i) => (
               <div
                 key={i}
@@ -341,7 +396,7 @@ export default function Home() {
           </div>
 
           {/* Easter Egg Hint */}
-          <div className="mt-16 text-center animate-fade-in">
+          <div className="mt-16 text-center animate-fade-in hidden md:block">
             <p className="text-sm text-gray-400 dark:text-gray-600 flex items-center justify-center gap-2">
               <Gamepad2 className="w-4 h-4" />
               Psst... Press "G" for a fun surprise
@@ -361,35 +416,42 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">What People Say</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
             {[
               {
-                quote: "Mohmed's ability to blend technical expertise with creative vision is unmatched. He transformed our user experience completely.",
-                author: "Sarah Chen",
-                role: "Product Director, TechFlow",
-                avatar: "SC"
+                quote: "Mohmed's ability to quickly grasp new technologies and adapt to any pivot is exceptional. He excelled at Linux infrastructure work, set up SonarQube from the ground up, and automated our onboarding processes and template pipelines in Azure. He also helped establish clean code standards, standardized naming conventions, and implemented best practices across our development workflows. Outstanding work.",
+                author: "Tom Wright",
+                role: "Sr Manager Platform Enablement, Walgreens",
+                avatar: "TW"
               },
               {
-                quote: "Working with Mohmed was a game-changer. His attention to detail and innovative approach delivered results beyond our expectations.",
-                author: "Marcus Rodriguez",
-                role: "CEO, StartupX",
-                avatar: "MR"
+                quote: "I guided Mohmed through Walgreens' certificate renewal process, and he built a complete full-stack application end-to-end that automates what was once a tedious weekly task. The tool generates new certificates for any onboarded application with just one click, completing in seconds what used to take hours. Mohmed's clean code, proper documentation, optimized database queries, automated deployments, and exceptional organization make him the most organized developer I've met at Walgreens.",
+                author: "Cicero Homes",
+                role: "Senior Engineer, Walgreens",
+                avatar: "CH"
               },
               {
-                quote: "A rare talent who understands both the artistry of design and the precision of engineering. Highly recommended!",
-                author: "Emily Watson",
-                role: "Creative Lead, Digital Canvas",
-                avatar: "EW"
+                quote: "Mohmed started with us as a manual QA tester and quickly learned automation, helping us build comprehensive end-to-end testing scripts. His exceptional eye for breaking applications and finding bugs is unmatched. He consistently discovered critical issues that others missed, making him an invaluable asset to our team.",
+                author: "Etsuko Yamane",
+                role: "QA Manager, Americaneagle.com",
+                avatar: "EY"
               }
             ].map((testimonial, i) => (
-              <div key={i} className="animate-fade-in-up">
-                <Card className="h-full border-none shadow-lg bg-white dark:bg-gray-900 hover:shadow-xl transition-all duration-300">
-                  <CardContent className="p-8">
-                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 italic">
+              <div 
+                key={i} 
+                className={`animate-fade-in-up transition-transform duration-300 ${
+                  i === 0 ? 'md:-rotate-2 md:-translate-y-2' : 
+                  i === 2 ? 'md:rotate-2 md:-translate-y-2' : 
+                  ''
+                }`}
+              >
+                <Card className="h-full border-none shadow-lg bg-white dark:bg-gray-900 hover:shadow-xl transition-all duration-300 flex flex-col hover:scale-105">
+                  <CardContent className="p-8 flex flex-col flex-1">
+                    <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6 italic flex-1">
                       "{testimonial.quote}"
                     </p>
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                    <div className="flex items-center gap-4 mt-auto">
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white font-bold flex-shrink-0">
                         {testimonial.avatar}
                       </div>
                       <div>
@@ -511,7 +573,7 @@ export default function Home() {
       </section>
 
       {/* Footer / Resume Section */}
-      <section className="py-20 md:py-24 bg-black dark:bg-black text-white relative z-10 overflow-hidden mt-12 rounded-t-[3rem]">
+      <section className="py-20 md:py-24 bg-black dark:bg-black text-white relative z-10 overflow-hidden rounded-t-[3rem]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-black to-black opacity-50" />
         <div className="container max-w-4xl mx-auto px-4 relative z-10 text-center">
           <h2 className="text-5xl md:text-7xl font-display font-bold mb-8 tracking-tight animate-fade-in">

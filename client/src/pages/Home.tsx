@@ -29,7 +29,7 @@ const ThemeToggle = () => {
 
 const JourneyItem = ({ year, title, company, description, align = "left" }: { year: string, title: string, company: string, description: string, align?: "left" | "right" }) => {
   return (
-    <div className={`flex flex-col items-center justify-between w-full mb-20 md:mb-32 relative z-10 gap-6 md:gap-0 ${align === "right" ? "md:flex-row-reverse" : "md:flex-row"}`}>
+    <div className={`flex flex-col items-center justify-between w-full mb-12 md:mb-16 relative z-10 gap-6 md:gap-0 ${align === "right" ? "md:flex-row-reverse" : "md:flex-row"}`}>
       
       {/* Mobile: Dot comes first (order-1), Card second (order-2) */}
       {/* Desktop: Card is order-1 (or 3), Dot is order-2 */}
@@ -192,11 +192,10 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-[110vh] flex flex-col items-center justify-center pt-8 pb-8 overflow-visible">
-        
-        {/* Abstract Background Elements */}
-        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-300/20 dark:bg-purple-900/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-blob" />
-        <div className="absolute top-1/3 -right-20 w-96 h-96 bg-indigo-300/20 dark:bg-indigo-900/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen animate-blob animation-delay-2000" />
+      <section className="relative min-h-[100vh] flex flex-col items-center justify-center pt-8 pb-12 overflow-hidden bg-gradient-to-b from-white via-slate-50/50 to-indigo-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-indigo-950/20">
+        {/* Decorative gradient blobs */}
+        <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-300/20 dark:bg-purple-900/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen" />
+        <div className="absolute top-1/3 -right-20 w-96 h-96 bg-indigo-300/20 dark:bg-indigo-900/20 rounded-full blur-[100px] mix-blend-multiply dark:mix-blend-screen" />
 
         <div className="container max-w-7xl mx-auto px-4 relative z-10">
           <div className="flex flex-col items-center text-center relative">
@@ -237,9 +236,12 @@ export default function Home() {
       </section>
 
       {/* Journey Section */}
-      <section className="py-32 relative z-10">
-        <div className="container max-w-5xl mx-auto px-4">
-          <div className="text-center mb-32 animate-fade-in">
+      <section className="py-20 md:py-24 relative z-10 bg-gradient-to-b from-slate-50/50 via-white to-indigo-50/30 dark:from-gray-950 dark:via-gray-900 dark:to-indigo-950/20 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-200/20 dark:bg-indigo-900/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-200/20 dark:bg-purple-900/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+        <div className="container max-w-5xl mx-auto px-4 relative z-10">
+          <div className="text-center mb-16 md:mb-20 animate-fade-in">
             <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-bold tracking-widest uppercase mb-4">Timeline</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400">My Journey</h2>
           </div>
@@ -271,9 +273,12 @@ export default function Home() {
       </section>
 
       {/* Expertise Section */}
-      <section className="py-32 relative z-10">
-        <div className="container max-w-6xl mx-auto px-4">
-           <div className="text-center mb-20 animate-fade-in">
+      <section className="py-20 md:py-24 relative z-10 bg-gradient-to-b from-indigo-50/30 via-white to-purple-50/30 dark:from-indigo-950/20 dark:via-gray-900 dark:to-purple-950/20 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-1/4 left-0 w-72 h-72 bg-purple-200/20 dark:bg-purple-900/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-indigo-200/20 dark:bg-indigo-900/10 rounded-full blur-3xl" />
+        <div className="container max-w-6xl mx-auto px-4 relative z-10">
+           <div className="text-center mb-12 md:mb-16 animate-fade-in">
             <span className="inline-block py-1 px-3 rounded-full bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300 text-sm font-bold tracking-widest uppercase mb-4">Skills</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">Expertise</h2>
           </div>
@@ -303,9 +308,12 @@ export default function Home() {
       </section>
 
       {/* About Me Section */}
-      <section className="py-32 bg-white/30 dark:bg-gray-900/30 relative z-10">
-        <div className="container max-w-4xl mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
+      <section className="py-20 md:py-24 relative z-10 bg-gradient-to-b from-purple-50/30 via-white to-pink-50/30 dark:from-purple-950/20 dark:via-gray-900 dark:to-pink-950/20 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-0 left-1/4 w-80 h-80 bg-pink-200/20 dark:bg-pink-900/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-purple-200/20 dark:bg-purple-900/10 rounded-full blur-3xl" />
+        <div className="container max-w-4xl mx-auto px-4 relative z-10">
+           <div className="text-center mb-12 md:mb-16 animate-fade-in">
             <span className="inline-block py-1 px-3 rounded-full bg-pink-100 dark:bg-pink-900/30 text-pink-700 dark:text-pink-300 text-sm font-bold tracking-widest uppercase mb-4">About</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white mb-6">Beyond the Code</h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
@@ -343,9 +351,12 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-32 relative z-10">
-        <div className="container max-w-6xl mx-auto px-4">
-          <div className="text-center mb-20 animate-fade-in">
+      <section className="py-20 md:py-24 relative z-10 bg-gradient-to-b from-pink-50/20 via-white to-indigo-50/30 dark:from-pink-950/10 dark:via-gray-900 dark:to-indigo-950/20 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-pink-200/15 dark:bg-pink-900/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-indigo-200/15 dark:bg-indigo-900/10 rounded-full blur-3xl" />
+        <div className="container max-w-6xl mx-auto px-4 relative z-10">
+           <div className="text-center mb-12 md:mb-16 animate-fade-in">
             <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-bold tracking-widest uppercase mb-4">Testimonials</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">What People Say</h2>
           </div>
@@ -395,9 +406,12 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-32 relative z-10">
-        <div className="container max-w-6xl mx-auto px-4">
-          <div className="text-center mb-20 animate-fade-in">
+      <section className="py-20 md:py-24 relative z-10 bg-gradient-to-b from-indigo-50/30 via-white to-blue-50/30 dark:from-indigo-950/20 dark:via-gray-900 dark:to-blue-950/20 overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute top-1/3 right-0 w-96 h-96 bg-blue-200/20 dark:bg-blue-900/10 rounded-full blur-3xl translate-x-1/2" />
+        <div className="absolute bottom-1/3 left-0 w-96 h-96 bg-indigo-200/20 dark:bg-indigo-900/10 rounded-full blur-3xl -translate-x-1/2" />
+        <div className="container max-w-6xl mx-auto px-4 relative z-10">
+           <div className="text-center mb-12 md:mb-16 animate-fade-in">
              <span className="inline-block py-1 px-3 rounded-full bg-indigo-100 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 text-sm font-bold tracking-widest uppercase mb-4">Portfolio</span>
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">Selected Work</h2>
           </div>
@@ -497,7 +511,7 @@ export default function Home() {
       </section>
 
       {/* Footer / Resume Section */}
-      <section className="py-32 bg-black dark:bg-black text-white relative z-10 overflow-hidden mt-20 rounded-t-[3rem]">
+      <section className="py-20 md:py-24 bg-black dark:bg-black text-white relative z-10 overflow-hidden mt-12 rounded-t-[3rem]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-black to-black opacity-50" />
         <div className="container max-w-4xl mx-auto px-4 relative z-10 text-center">
           <h2 className="text-5xl md:text-7xl font-display font-bold mb-8 tracking-tight animate-fade-in">

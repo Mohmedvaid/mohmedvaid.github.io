@@ -143,6 +143,7 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [showGame, setShowGame] = useState(false);
   const [showContact, setShowContact] = useState(false);
+  const [showResume, setShowResume] = useState(false);
 
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
@@ -175,7 +176,14 @@ export default function Home() {
       <SnakeGame isOpen={showGame} onClose={() => setShowGame(false)} />
       
       {/* Contact Dialog */}
-      <ContactDialog isOpen={showContact} onClose={() => setShowContact(false)} />
+      <ContactDialog 
+        isOpen={showContact} 
+        onClose={() => setShowContact(false)} 
+        onViewResume={() => {
+          setShowContact(false);
+          setShowResume(true);
+        }}
+      />
 
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-4 bg-white/95 dark:bg-gray-950/95 border-b border-gray-200 dark:border-gray-800 shadow-sm">
@@ -668,12 +676,14 @@ export default function Home() {
           </h2>
           
           <div className="flex flex-col md:flex-row gap-6 justify-center items-center mt-16">
-            <Dialog>
-              <DialogTrigger asChild>
-                <Button size="lg" className="h-16 px-10 rounded-full text-lg bg-white text-black hover:bg-gray-200 hover:scale-105 transition-all duration-300 font-bold">
-                  View Resume
-                </Button>
-              </DialogTrigger>
+            <Button 
+              size="lg" 
+              className="h-16 px-10 rounded-full text-lg bg-white text-black hover:bg-gray-200 hover:scale-105 transition-all duration-300 font-bold"
+              onClick={() => setShowContact(true)}
+            >
+              View Resume
+            </Button>
+            <Dialog open={showResume} onOpenChange={setShowResume}>
               <DialogContent className="max-w-4xl h-[85vh] p-0 flex flex-col bg-white border-none">
                    <div className="flex-1 overflow-y-auto p-8 bg-white min-h-0">
                       <div className="max-w-3xl mx-auto">

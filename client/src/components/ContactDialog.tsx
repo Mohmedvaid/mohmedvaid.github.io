@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, Copy, Check } from "lucide-react";
+import { Mail, Phone, Copy, Check, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface ContactDialogProps {
   isOpen: boolean;
   onClose: () => void;
+  onViewResume?: () => void;
 }
 
-export const ContactDialog = ({ isOpen, onClose }: ContactDialogProps) => {
+export const ContactDialog = ({ isOpen, onClose, onViewResume }: ContactDialogProps) => {
   const [phoneRevealed, setPhoneRevealed] = useState(false);
   const [emailCopied, setEmailCopied] = useState(false);
   const [phoneCopied, setPhoneCopied] = useState(false);
@@ -157,6 +158,26 @@ export const ContactDialog = ({ isOpen, onClose }: ContactDialogProps) => {
                 </Button>
               )}
             </motion.div>
+
+            {/* View Resume Button */}
+            {onViewResume && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="w-full pt-4 border-t border-gray-200 dark:border-gray-700"
+              >
+                <Button
+                  className="w-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white gap-2"
+                  onClick={() => {
+                    onViewResume();
+                  }}
+                >
+                  <FileText className="w-4 h-4" />
+                  View Resume
+                </Button>
+              </motion.div>
+            )}
           </div>
 
           <p className="text-xs text-gray-400 dark:text-gray-600 mt-6">

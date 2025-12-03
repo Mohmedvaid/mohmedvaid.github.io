@@ -1,25 +1,9 @@
 # robots.txt for mohmedvaid.github.io
+# Blocking all search engine crawlers - private portfolio site
 
 User-agent: *
-Allow: /
+Disallow: /
 
-# Sitemap location
-Sitemap: https://mohmedvaid.github.io/sitemap.xml
-
-# Disallow crawling of admin or private areas if any exist in future
-# Disallow: /admin/
-# Disallow: /private/
-
-# Allow all major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-# Crawl delay (optional, helps prevent overloading server)
-Crawl-delay: 1
+# Note: This site is not intended for search engine indexing.
+# All SEO structure is in place for demonstration purposes only.
 

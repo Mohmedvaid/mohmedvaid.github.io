@@ -8,7 +8,20 @@ import { useTheme } from "next-themes";
 import { CustomCursor } from "@/components/CustomCursor";
 import { SnakeGame } from "@/components/SnakeGame";
 import { ContactDialog } from "@/components/ContactDialog";
+import { ResumePreview } from "@/components/ResumePreview";
 import userImage from '@assets/me.png';
+
+const RESUME_PATHS = {
+  pdf: { href: "/attached_assets/Mohmed_Vaid_Resume.pdf", download: "Mohmed_Vaid_Resume.pdf" },
+  docx: { href: "/attached_assets/Mohmed_Vaid_Resume.docx", download: "Mohmed_Vaid_Resume.docx" },
+} as const;
+
+const downloadResume = ({ href, download }: { href: string; download: string }) => {
+  const link = document.createElement("a");
+  link.href = href;
+  link.download = download;
+  link.click();
+};
 
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
@@ -188,8 +201,8 @@ export default function Home() {
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-6 py-4 bg-white/95 dark:bg-gray-950/95 border-b border-gray-200 dark:border-gray-800 shadow-sm">
         <div className="font-display font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">MOHMED VAID</div>
-        <div className="flex gap-4 items-center">
-           <div className="hidden md:flex gap-2 mr-4">
+        <div className="flex gap-3 md:gap-4 items-center">
+           <div className="hidden md:flex gap-2">
              <Button 
                variant="ghost" 
                size="icon" 
@@ -208,6 +221,12 @@ export default function Home() {
              </Button>
              <ThemeToggle />
            </div>
+           <Button
+             className="rounded-full px-5 font-medium bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all"
+             onClick={() => setShowResume(true)}
+           >
+             Resume
+           </Button>
            <Button 
              className="bg-black dark:bg-white text-white dark:text-black hover:bg-gray-900 dark:hover:bg-gray-200 rounded-full px-6 font-medium shadow-lg hover:shadow-xl transition-all"
              onClick={() => setShowContact(true)}
@@ -252,7 +271,7 @@ export default function Home() {
                 <InteractiveText />
                 
                 <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-300 font-medium max-w-xl mx-auto leading-relaxed bg-white/90 dark:bg-gray-900/90 p-4 rounded-2xl border border-gray-200 dark:border-gray-800 animate-fade-in">
-                  Software Engineer from <span className="text-black dark:text-white font-bold">Chicago</span>, crafting AI-powered solutions and scalable systems.
+                  AI & Full Stack Engineer from <span className="text-black dark:text-white font-bold">Chicago</span>, building agentic systems, LLM workflows, and scalable cloud platforms.
                 </p>
               </div>
             </div>
@@ -309,7 +328,7 @@ export default function Home() {
               title="Full Stack Developer"
               company="Upwork, Freelance Remote"
               logo="/assets/logos/upwork-logo.webp"
-              description="Designed full-stack solutions with Node.js, Express, React, and MongoDB. Integrated OpenAI GPT models for AI features. Prototyped with Stable Diffusion and Whisper APIs. Reduced site load times from 7+ seconds to under 2 seconds through optimization. Implemented cybersecurity best practices and OWASP Top 10 protections."
+              description="Delivered full-stack apps for global clients with Node.js, Express, and React. Integrated OpenAI GPT and multimodal APIs (Stable Diffusion, Whisper) into production features. Optimized MySQL/MongoDB schemas and cut load times from 7+ seconds to under 2 seconds with OWASP-aligned security practices."
               align="left"
             />
             <JourneyItem 
@@ -325,7 +344,7 @@ export default function Home() {
               title="Software Engineer"
               company="Walgreens, Chicago IL"
               logo="/assets/logos/wag.webp"
-              description="Engineered enterprise-grade full-stack solutions with MERN stack on Azure. Built AI-powered chatbots using OpenAI GPT-4 and Microsoft Copilot. Developed custom AI/ML workflows with Stable Diffusion and Whisper APIs. Created data engineering pipelines aggregating telemetry into Azure Synapse and Microsoft Fabric for analytics."
+              description="Shipped LLM copilots and RAG chatbots (GPT-4, Microsoft Copilot), built agentic automations with tool use and API orchestration, and delivered Azure certificate lifecycle automation cutting release cycles ~35%. Led SonarQube onboarding, Python telemetry pipelines to Synapse/Fabric, and production incident response."
               align="left"
             />
           </div>
@@ -343,18 +362,19 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-display font-bold text-gray-900 dark:text-white">Expertise</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="flex flex-wrap justify-center gap-8">
             {[
-              { title: "Frontend Architecture", skills: ["React", "Next.js", "TypeScript", "Vite", "Micro-frontends", "Tailwind CSS"] },
-              { title: "Creative Coding", skills: ["WebGL", "Three.js", "GSAP", "Framer Motion", "Canvas API", "SVG Animation"] },
-              { title: "Backend & Cloud", skills: ["Node.js", "Azure", "AWS", "CI/CD Pipelines", "Docker", "Serverless", "Azure DevOps", "Kubernetes"] },
-              { title: "Database Systems", skills: ["PostgreSQL", "MongoDB", "Redis", "Query Optimization"] },
+              { title: "AI & LLM", skills: ["LangChain", "LangGraph", "RAG", "MCP", "GPT-4/Claude", "Multi-agent Workflows", "Prompt Engineering", "Vector Search", "CrewAI", "OpenAI Agents SDK"] },
+              { title: "AI Tooling & Multimodal", skills: ["GitHub Copilot", "Cursor", "Claude Code", "Microsoft Copilot", "Stable Diffusion", "Whisper", "n8n", "Hugging Face"] },
+              { title: "Frontend Architecture", skills: ["React", "Next.js", "TypeScript", "Redux", "React Native", "Tailwind CSS", "GraphQL", "REST APIs"] },
+              { title: "Backend & Cloud", skills: ["Node.js", "Express", "Azure", "Azure DevOps", "Docker", "Kubernetes", "CI/CD", "GitHub Actions", "Jenkins"] },
+              { title: "Data & Storage", skills: ["MongoDB", "MySQL", "Redis", "Azure Synapse", "Microsoft Fabric", "Vector DBs", "Query Optimization"] },
+              { title: "Testing & Quality", skills: ["Cypress", "Selenium", "Jest", "Mocha", "SonarQube", "Dynatrace", "JMeter", "Postman"] },
               { title: "Algorithms & Data Structures", skills: ["Algorithm Design", "Complexity Analysis", "Graph Algorithms", "Dynamic Programming"] },
-              { title: "AI & Machine Learning", skills: ["OpenAI GPT", "Stable Diffusion", "Whisper API", "AI Integration", "ML Workflows"] }
-            ].map((category, i) => (
+            ].map((category) => (
               <div
-                key={i}
-                className="bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:border-purple-200 dark:hover:border-purple-800 transition-all duration-300 group animate-fade-in-up"
+                key={category.title}
+                className="w-full md:w-[calc((100%-2rem)/2)] lg:w-[calc((100%-4rem)/3)] bg-white dark:bg-gray-900 p-8 rounded-3xl shadow-sm border border-gray-100 dark:border-gray-800 hover:shadow-xl hover:border-purple-200 dark:hover:border-purple-800 transition-all duration-300 group animate-fade-in-up"
               >
                 <h3 className="font-display text-xl font-bold mb-6 text-gray-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-purple-400 transition-colors">{category.title}</h3>
                 <div className="flex flex-wrap gap-3">
@@ -387,7 +407,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { icon: Heart, title: "Design Philosophy", text: "I believe great software should feel invisible—intuitive enough that users focus on their goals, not the interface." },
-              { icon: Code, title: "Continuous Learning", text: "Currently exploring AI/ML integration in web apps and experimenting with WebGPU for next-gen graphics." },
+              { icon: Code, title: "Continuous Learning", text: "Building agentic workflows with LangGraph and MCP, shipping RAG pipelines, and pushing LLM-powered tooling into production on Azure." },
               { icon: Coffee, title: "Outside Work", text: "Coffee enthusiast, analog photography lover, and weekend hiker. Always looking for the next creative challenge." }
             ].map((item, i) => (
               <div
@@ -496,7 +516,7 @@ export default function Home() {
                 <CardHeader>
                   <CardTitle className="font-display text-xl group-hover:text-indigo-700 dark:group-hover:text-indigo-400 transition-colors text-gray-900 dark:text-white">Agentic AI Automation</CardTitle>
                   <div className="flex flex-wrap gap-2 mt-2">
-                    {["React", "TypeScript", "Node.js", "Drag & Drop"].map(tag => (
+                    {["React", "TypeScript", "LangChain", "AI Agents", "Node.js"].map(tag => (
                       <Badge key={tag} variant="secondary" className="bg-indigo-50 dark:bg-indigo-900/30 hover:bg-indigo-100 dark:hover:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300 border-transparent transition-colors">
                         {tag}
                       </Badge>
@@ -505,7 +525,7 @@ export default function Home() {
                 </CardHeader>
                 <CardContent className="flex flex-col flex-1">
                   <p className="text-muted-foreground dark:text-gray-400 leading-relaxed mb-4 flex-1">
-                    AI-powered workflow builder enabling intelligent automation agents to handle complex tasks through intuitive drag-and-drop interface.
+                    Agentic workflow builder for multi-step AI task execution and pipeline orchestration across tools and services.
                   </p>
                   <div className="flex gap-3 mt-auto">
                     <Button 
@@ -679,113 +699,30 @@ export default function Home() {
             <Button 
               size="lg" 
               className="h-16 px-10 rounded-full text-lg bg-white text-black hover:bg-gray-200 hover:scale-105 transition-all duration-300 font-bold"
-              onClick={() => setShowContact(true)}
+              onClick={() => setShowResume(true)}
             >
               View Resume
             </Button>
             <Dialog open={showResume} onOpenChange={setShowResume}>
               <DialogContent className="max-w-4xl h-[85vh] p-0 flex flex-col bg-white border-none">
                    <div className="flex-1 overflow-y-auto p-8 bg-white min-h-0">
-                      <div className="max-w-3xl mx-auto">
-                        {/* Preview Notice */}
-                        <div className="mb-6 p-4 bg-indigo-50 border-l-4 border-indigo-600 rounded-r-lg">
-                          <p className="text-sm text-indigo-900">
-                            <span className="font-semibold">📄 Preview Mode:</span> This is a condensed overview. Download the full resume below for complete details.
-                          </p>
-                        </div>
-
-                        {/* Header */}
-                        <div className="text-center mb-8 pb-6 border-b-2 border-indigo-600">
-                          <h1 className="text-4xl font-display font-bold text-gray-900 mb-2">MOHMED VAID</h1>
-                          <p className="text-gray-600">Skokie, IL 60076 | mohmedvaid@gmail.com</p>
-                          <p className="text-sm text-indigo-600 mt-1">
-                            linkedin.com/in/mohmedvaid | github.com/mohmedvaid | mohmedvaid.github.io
-                          </p>
-                        </div>
-
-                        {/* Profile Summary */}
-                        <section className="mb-6">
-                          <h2 className="text-xl font-bold text-indigo-600 mb-2 uppercase tracking-wide">Profile Summary</h2>
-                          <p className="text-gray-700 leading-relaxed">
-                            Full Stack Engineer with 5+ years in Fortune 500 and freelance roles, fusing AI and DevOps for scalable web apps and automation pipelines. Expertise in TypeScript, JavaScript, Python, Azure, OpenAI GPT models, and Copilot tools to deliver secure, end-to-end cloud workflows.
-                          </p>
-                        </section>
-
-                        {/* Technical Skills */}
-                        <section className="mb-6">
-                          <h2 className="text-xl font-bold text-indigo-600 mb-2 uppercase tracking-wide">Technical Skills</h2>
-                          <div className="space-y-2 text-sm">
-                            <p className="text-gray-700"><span className="font-semibold">Programming Languages:</span> JavaScript (ES6+), TypeScript, Python, HTML5, CSS3</p>
-                            <p className="text-gray-700"><span className="font-semibold">Web & App Development:</span> Node.js, Express, React, Redux, Next.js, React Native, RESTful APIs, GraphQL</p>
-                            <p className="text-gray-700"><span className="font-semibold">AI & ML Tools:</span> OpenAI API (GPT-4, GPT-4o), GitHub Copilot, Microsoft 365 Copilot, Stable Diffusion, Whisper, LangChain</p>
-                            <p className="text-gray-700"><span className="font-semibold">DevOps & Cloud:</span> Azure DevOps, Docker, Kubernetes, Jenkins, GitHub Actions, SonarQube</p>
-                            <p className="text-gray-700 italic">...and more (Click Download for full resume)</p>
-                          </div>
-                        </section>
-
-                        {/* Experience */}
-                        <section className="mb-6">
-                          <h2 className="text-xl font-bold text-indigo-600 mb-3 uppercase tracking-wide">Experience</h2>
-                          
-                          <div className="mb-4">
-                            <h3 className="font-bold text-gray-900">Software Engineer</h3>
-                            <p className="text-sm text-gray-600 italic">Walgreens, Chicago IL (06/2022 - Present)</p>
-                            <ul className="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
-                              <li>Engineered enterprise-grade full-stack solutions with MERN stack on Azure, reducing release cycles by 35%</li>
-                              <li>Built AI-powered chatbots using OpenAI GPT-4 and Microsoft Copilot integrations</li>
-                              <li>Developed data engineering pipelines aggregating telemetry into Azure Synapse and Microsoft Fabric</li>
-                              <li>Created full-stack certificate renewal platform reducing manual effort by 90%</li>
-                              <li className="italic">...and more</li>
-                            </ul>
-                          </div>
-
-                          <div className="mb-4">
-                            <h3 className="font-bold text-gray-900">Automation Engineer</h3>
-                            <p className="text-sm text-gray-600 italic">Americaneagle.com, Des Plaines, IL (09/2019 – 06/2022)</p>
-                            <ul className="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
-                              <li>Developed Cypress and Selenium automation frameworks enhancing release quality</li>
-                              <li>Built automation scripts with JavaScript/TypeScript integrated with Azure DevOps Pipelines</li>
-                              <li>Performed multi-browser testing and RESTful API validation across environments</li>
-                              <li>Collaborated in Agile/Scrum environment delivering stable releases</li>
-                              <li className="italic">...and more</li>
-                            </ul>
-                          </div>
-
-                          <div className="mb-4">
-                            <h3 className="font-bold text-gray-900">Full Stack Developer</h3>
-                            <p className="text-sm text-gray-600 italic">Upwork, Freelance, Remote (07/2020 - 06/2022)</p>
-                            <ul className="list-disc list-inside text-sm text-gray-700 mt-2 space-y-1">
-                              <li>Delivered full-stack solutions with Node.js, Express, React, and MongoDB for global clients</li>
-                              <li>Integrated OpenAI GPT models for AI-powered features in client applications</li>
-                              <li>Reduced site load times from 7+ seconds to under 2 seconds through optimizations</li>
-                              <li>Implemented security best practices including OWASP Top 10 compliance</li>
-                              <li className="italic">...and more</li>
-                            </ul>
-                          </div>
-                        </section>
-
-                        {/* Education */}
-                        <section>
-                          <h2 className="text-xl font-bold text-indigo-600 mb-2 uppercase tracking-wide">Education</h2>
-                          <p className="text-gray-700 font-semibold">Certificate in Full Stack Web Development</p>
-                          <p className="text-sm text-gray-600">Northwestern University, Evanston, IL (01/2021 – 07/2022)</p>
-                          <p className="text-gray-700 font-semibold mt-2">Bachelor of Computer Science</p>
-                          <p className="text-sm text-gray-600">Northeastern Illinois University, Chicago, IL (06/2017 – 12/2021)</p>
-                        </section>
-                      </div>
+                      <ResumePreview />
                    </div>
-                   <div className="flex-shrink-0 p-4 bg-gray-50 border-t flex justify-end">
-                     <Button 
+                   <div className="flex-shrink-0 p-4 bg-gray-50 border-t flex justify-end gap-3">
+                     <Button
+                       variant="outline"
                        className="gap-2"
-                       data-testid="button-download-resume"
-                       onClick={() => {
-                         const link = document.createElement('a');
-                         link.href = '/attached_assets/Mohmed_Vaid_Resume.pdf';
-                         link.download = 'Mohmed_Vaid_Resume.pdf';
-                         link.click();
-                       }}
+                       data-testid="button-download-resume-docx"
+                       onClick={() => downloadResume(RESUME_PATHS.docx)}
                      >
-                       <Download className="w-4 h-4" /> Download Resume
+                       <Download className="w-4 h-4" /> Download Word
+                     </Button>
+                     <Button
+                       className="gap-2"
+                       data-testid="button-download-resume-pdf"
+                       onClick={() => downloadResume(RESUME_PATHS.pdf)}
+                     >
+                       <Download className="w-4 h-4" /> Download PDF
                      </Button>
                    </div>
               </DialogContent>

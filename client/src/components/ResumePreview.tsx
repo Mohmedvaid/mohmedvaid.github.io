@@ -142,7 +142,6 @@ export const ResumePreview = () => (
         bullets={[
           "Delivered end-to-end web apps for global clients: responsive UIs (HTML/CSS/JS/jQuery) and scalable Node.js/Express backends with RESTful APIs and reusable integration modules.",
           "Integrated OpenAI GPT models and other AI APIs (text, image, voice) into client products, enabling smart chat interfaces, content generation, and interactive experiences.",
-          "Prototyped AI features with Stable Diffusion (image generation) and Whisper (speech-to-text) to validate real-world use cases before full implementation.",
           "Designed MySQL and MongoDB schemas with optimized queries, improving reliability and cutting response times by up to ~40%.",
           "Implemented security best practices (authN/authZ, input validation, SQL injection prevention, OWASP Top 10) and reduced page load times from 7+ seconds to under 2 seconds via async JS, caching, and query optimization.",
         ]}

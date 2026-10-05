@@ -328,7 +328,7 @@ export default function Home() {
               title="Full Stack Developer"
               company="Upwork, Freelance Remote"
               logo="/assets/logos/upwork-logo.webp"
-              description="Delivered full-stack apps for global clients with Node.js, Express, and React. Integrated OpenAI GPT and multimodal APIs (Stable Diffusion, Whisper) into production features. Optimized MySQL/MongoDB schemas and cut load times from 7+ seconds to under 2 seconds with OWASP-aligned security practices."
+              description="Delivered full-stack apps for global clients with Node.js, Express, and React. Integrated OpenAI GPT into production features. Optimized MySQL/MongoDB schemas and cut load times from 7+ seconds to under 2 seconds with OWASP-aligned security practices."
               align="left"
             />
             <JourneyItem 
